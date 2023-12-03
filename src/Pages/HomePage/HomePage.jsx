@@ -5,6 +5,8 @@ import ProductList from '../../Components/ProductList';
 import Toast from '../../Components/Toast/Toast';
 import Discount from '../../Components/Discount';
 
+
+
 export default function HomePage() {
   const [categories, setCategories] = useState([])
   const [toast, setToast] = useState({ type: 'info', message: '' })
@@ -17,13 +19,13 @@ export default function HomePage() {
       })
   }, [])
 
+ 
 
   return (
     <React.Fragment>
-
       <Carousel />
       <Discount />
-      <ProductList categories={categories} />
+     <ProductList categories={categories} />
       <Toast type={toast.type} message={toast.message} />
     </React.Fragment>
   )

@@ -5,7 +5,8 @@ import * as yup from "yup"
 import Select from 'react-select';
 import Toast from '../../Components/Toast/Toast';
 import { useNavigate } from 'react-router-dom';
-import { CartState } from '../../Context/ShoppingCart-Context';
+import { useDispatch } from 'react-redux';
+
 
 export default function Checkout() {
 
@@ -46,11 +47,12 @@ export default function Checkout() {
   const [error, setError] = useState(false)
   const [toast, setToast] = useState({ type: 'info', message: '' })
   const navigate = useNavigate();
-  const { state, dispatch } = CartState()
+  const dispatch=useDispatch()
+  
 
   const schema = yup.object().shape({
     fullname: yup.string().required("فیلد نام اجباری است"),
-    email: yup.string().email().required("فیلد ایمیل اجباری است"),
+    email: yup.string().email('ایمیل معتبر وارد کنید').required("فیلد ایمیل اجباری است"),
     password: yup.string().min(4, 'پسورد حداقل 4 کاراکتر است').max(20, 'پسورد حداکثر 20 کاراکتر است').required("فیلد پسورد اجباری است"),
     confirmPassword: yup
       .string()
@@ -67,9 +69,11 @@ export default function Checkout() {
   const handleSelectChange = (selected) => {
     setSelectedOption(selected);
     setValue('city', selected);
+
   };
 
   const onSubmit = (data) => {
+    console.log(selectedOption)
     if (!selectedOption) {
       setError(true)
     }
@@ -80,7 +84,6 @@ export default function Checkout() {
       dispatch({
         type: 'REMOVE_ALL_PRODUCTS'
       })
-      localStorage.removeItem('cart')
       localStorage.removeItem('TotalPrice')
       setTimeout(() => {
         navigate('/');

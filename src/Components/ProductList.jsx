@@ -2,35 +2,38 @@ import React, { useState, useEffect } from 'react';
 import Product from './Product';
 import { CardGroup, Input } from 'reactstrap';
 import ReactPaginate from 'react-paginate';
-import { getProducts } from '../Pages/HomePage';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProducts } from '../action';
+import Loading from './Loading';
+
 
 export default function ProductList({ categories }) {
-  const [products, setProducts] = useState([])
+
   const [searchItem, setSearchItem] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 8;
+  const status=useSelector(state => state.products.status)
 
+
+  const dispatch = useDispatch()
   useEffect(() => {
-    getProducts()
-      .then(data => {
-        setProducts(data)
-        setTotalPages(Math.ceil(data.length / itemsPerPage))
-      })
-  }, [])
+    dispatch(fetchProducts());
+  }, []);
+
+  const products = useSelector(state => state.products.entities)
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const subset = filteredProducts.slice(startIndex, endIndex);
-
+ // setTotalPages(Math.ceil(data.length / itemsPerPage))
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
   }
 
   useEffect(() => {
     const filterd = products.filter((product) => {
-      console.log(searchItem)
       return product.title.toString().toLowerCase().includes(searchItem)
     })
     setFilteredProducts(filterd);
@@ -44,7 +47,7 @@ export default function ProductList({ categories }) {
   const filterItem = (selectedCategory) => {
     if (selectedCategory === 'category') {
       setFilteredProducts(products)
-    } 
+    }
     else {
       const updatedList = products.filter((item) => {
         return item.category === selectedCategory
@@ -84,7 +87,9 @@ export default function ProductList({ categories }) {
 
 
       {
-        <>
+      status === 'pending' ? <Loading />
+      :
+      <>
           <CardGroup>
             {subset.map((item) => (
               <Product key={item.id} id={item.id} description={item.description} title={item.title} quantity={item.rating.count} category={item.category} image={item.image} price={item.price} />

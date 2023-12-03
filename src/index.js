@@ -5,15 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter } from 'react-router-dom';
-import { Context } from './Context/ShoppingCart-Context';
+import { Provider } from 'react-redux';
+import store, { persistor } from './store';
+import { PersistGate } from 'redux-persist/integration/react'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <BrowserRouter>
-        <Context>
+        <Provider store={store}>
+        <PersistGate persistor={persistor}>
             <App />
-        </Context>
+            </PersistGate>
+        </Provider>
     </BrowserRouter>
 
 );

@@ -249,3 +249,17 @@ ul.pagination li a.active {
 
 /* end of Discount cards */
 
+/* start of loading */
+
+.loading{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  margin-top: 25px;
+}
+
+
+

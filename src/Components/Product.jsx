@@ -1,6 +1,8 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { FaTrash } from "react-icons/fa";
 import {Col,CardFooter,Card, CardImg,CardBody,CardTitle,CardSubtitle,CardText,Button} from 'reactstrap'
-import { CartState } from '../Context/ShoppingCart-Context'
+import { selectCartItems } from '../action';
 export default function Product({id,description,title,quantity,category,image,price}) {
 
   const truncateTitle = (title) => {
@@ -8,8 +10,11 @@ export default function Product({id,description,title,quantity,category,image,pr
     const truncatedWords = words.slice(0,10);
     return truncatedWords.join(' ');
   };
+
+  const cartItems=useSelector(selectCartItems)
+  const dispatch=useDispatch()
+
   
-  const {state , dispatch}=CartState()
     return (
     <Col lg='3' md='6' sm='12' xs='12' dir='ltr'>
   <Card className='p-3'>
@@ -40,25 +45,19 @@ export default function Product({id,description,title,quantity,category,image,pr
    <div className='d-flex justify-content-between'>
    <span>price: {price}</span>
     {quantity > 0 ? <div>
-      {state.cart.some(item=>item.id === id) ? 
-      <Button color='dark' onClick={()=>{
-        dispatch({
-          type:'REMOVE_FROM_CART',
-          payload:{
-            id
-          }
-        })
-      }}>پاک کردن از سبد خرید</Button>
-    :
-    <Button color='dark' onClick={()=>{
-      dispatch({
-        type:'ADD_TO_CART',
-        payload:{
-          id
-        }
-      })
-    }}>اضافه کردن به سبد خرید</Button>
-    }
+      {cartItems.some(item=>item.id === id) ? 
+          <Button color='dark' className='me-2' onClick={()=>dispatch({
+            type:'REMOVE_FROM_CART',
+            payload : id
+          })}>
+             <FaTrash color='red' /> 
+             </Button>
+              : null  }
+    <Button color='dark' onClick={()=>dispatch({
+      type : 'ADD_TO_CART',
+      payload: id
+    })}>اضافه کردن به سبد خرید</Button>
+    
     </div> : <span>ناموجود</span>}
    </div>
         

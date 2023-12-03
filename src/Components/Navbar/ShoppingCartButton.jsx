@@ -7,8 +7,9 @@ import {
     DropdownMenu,
     DropdownItem,
 } from 'reactstrap';
-import { CartState } from '../../Context/ShoppingCart-Context';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../action';
 
 const truncateTitle = (title) => {
     const words = title.split(' ');
@@ -20,24 +21,27 @@ export default function ShoppingCartButton() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen((prevState) => !prevState);
-    const { state, dispatch } = CartState()
 
+    const cartItems = useSelector(selectCartItems)
+    const products = useSelector(selectProducts)
+    const dispatch = useDispatch()
+    const count = useSelector(selectNumber)
+    
 
     return (
         <>
             <Dropdown isOpen={dropdownOpen} toggle={toggle} className='ms-5'>
                 <DropdownToggle className='border' color="light" caret>
                     <Badge pill color="success">
-                        {state.cart.length}
+                        {count}
                     </Badge>
                     <MdOutlineShoppingCart />
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem header className='text-center text-dark'>سبدخرید</DropdownItem>
-
                     {
-                        state.cart.map((cartItem) => {
-                            const cartProduct = state.products.find(item => item.id == cartItem.id)
+                        cartItems.map((cartItem) => {
+                            const cartProduct = products.find(item => item.id == cartItem.id)
                             if (cartProduct) {
 
                                 return (
@@ -46,7 +50,15 @@ export default function ShoppingCartButton() {
                                         <DropdownItem style={{ width: "200px" }}
                                         >
                                             <div className='d-flex justify-content-between'>
+                                                <Button color='none' onClick={() => dispatch(removeFromCart(cartProduct.id))}>
+                                                    <FaTrash color='red' />
+                                                </Button>
+
                                                 <div>
+                                                    <span>
+                                                        {truncateTitle(cartProduct.title)}
+                                                    </span>
+
                                                     <img src={cartProduct.image}
                                                         width={'40px'}
                                                         height={'40px'}
@@ -55,35 +67,19 @@ export default function ShoppingCartButton() {
                                                             marginRight: "2px"
                                                         }}
                                                     />
-                                                    <span>
-                                                        {truncateTitle(cartProduct.title)}
-                                                    </span>
 
                                                 </div>
-                                                <span 
-                                                onClick={() => dispatch({
-                                                    type: 'REMOVE_FROM_CART',
-                                                    payload: {
-                                                        id: cartProduct.id
-                                                    }
-                                                })}>
-                                                    <FaTrash color='red' />
-                                                    </span>
                                             </div>
                                         </DropdownItem>
                                     </Fragment>
-
                                 )
                             }
-
                         })
                     }
 
-
                     {
-                        state.cart.length > 0 ?
-                            <Link to='/shoppingCart' >
-                                {localStorage.setItem('cart', JSON.stringify(state.cart))}
+                        cartItems.length > 0 ?
+                            <Link to='/shoppingCart'>
                                 <Button block color='dark' size='sm'>ادامه</Button>
                             </Link>
                             :
