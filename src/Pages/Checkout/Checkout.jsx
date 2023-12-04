@@ -7,6 +7,7 @@ import Toast from '../../Components/Toast/Toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import Map from '../../Components/Map/Map';
+import { Controller } from 'react-hook-form';
 
 export default function Checkout() {
 
@@ -42,9 +43,6 @@ export default function Checkout() {
     { value: 'یزد', label: 'یزد' },
   ];
 
-
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [error, setError] = useState(false)
   const [toast, setToast] = useState({ type: 'info', message: '' })
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -54,43 +52,33 @@ export default function Checkout() {
     fullname: yup.string().required("فیلد نام اجباری است"),
     email: yup.string().email('ایمیل معتبر وارد کنید').required("فیلد ایمیل اجباری است"),
     password: yup.string().min(4, 'پسورد حداقل 4 کاراکتر است').max(20, 'پسورد حداکثر 20 کاراکتر است').required("فیلد پسورد اجباری است"),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref("password"), null], "رمزهای عبور مطابقت ندارند")
-      .required('فیلد اجباری است'),
+    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "رمزهای عبور مطابقت ندارند").required('فیلد اجباری است'),
+    city: yup.object().shape({
+      value: yup.string().required('شهر '),
+      label: yup.string().required('وارد'),
+    }).required('شهر خود را وارد کنید')
   })
 
 
-  const { register, handleSubmit, setValue, formState: { errors }, } = useForm({
+  const { register, control, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
   });
 
 
   const handleSelectChange = (selected) => {
-    setSelectedOption(selected);
     setValue('city', selected);
-
   };
 
   const onSubmit = (data) => {
-    console.log(selectedOption)
-    if (!selectedOption) {
-      setError(true)
-    }
-    else {
-      setError(false)
-      data.city = selectedOption;
-      setToast({ type: "success", message: `اطلاعات کاربری شما با موفقیت ثبت شد` });
-      dispatch({
-        type: 'REMOVE_ALL_PRODUCTS'
-      })
-      localStorage.removeItem('TotalPrice')
-      setTimeout(() => {
-        navigate('/');
-      }, 3000);
-      console.log(data);
-    }
-  };
+
+    setToast({ type: "success", message: `اطلاعات کاربری شما با موفقیت ثبت شد` });
+    dispatch({ type: 'REMOVE_ALL_PRODUCTS' })
+    localStorage.removeItem('TotalPrice')
+    setTimeout(() => {
+      navigate('/');
+    }, 3000);
+    console.log(data);
+  }
 
   useEffect(() => {
     setToast({ type: "warning", message: `مهلت تکمیل خرید 15 دقیقه است` });
@@ -105,7 +93,7 @@ export default function Checkout() {
   return (
     <>
       <div className='row bg-dark' style={{ height: '100vh', paddingTop: '45px' }}>
-        <div class='col-md-2'></div>
+        <div className='col-md-2'></div>
         <div className='col-md-8'>
           <div className='row bg-light border border-dark border-1'>
             <div className='col-md-12 '>
@@ -126,18 +114,32 @@ export default function Checkout() {
                     <span className='fs-6 text-danger p-2 mb-1'>{errors.fullname?.message}</span>
                     <br />
                     <label htmlFor='city' className='mb-1'> استان </label>
-                    <Select
-                      id='city'
-                      placeholder='انتخاب کنید'
-                      defaultValue={selectedOption}
-                      onChange={handleSelectChange}
-                      options={options}
+
+                    <Controller
                       name="city"
-                      className='mb-1'
+                      control={control}
+                      defaultValue={null}
+                      render={({ field }) => (
+                        <>
+            
+                          <Select
+                            {...field}
+                            placeholder='انتخاب کنید'
+                            onChange={(selectedOption) => {
+                              handleSelectChange(selectedOption);
+                              field.onChange(selectedOption);
+                            }}
+                            options={options}
+                            value={field.value || null}
+                            className='mb-1'
+
+                          />
+                          {errors.city && (
+                            <span className='fs-6 text-danger p-2 mb-1'>{errors.city.message}</span>
+                          )}
+                        </>
+                      )}
                     />
-                    {error &&
-                      <span className='fs-6 text-danger p-2 mb-1'>شهر خود را وارد کنید</span>
-                    }
                     <br />
                     <label htmlFor='email' className='mb-1'>ایمیل</label>
                     <input
@@ -171,7 +173,7 @@ export default function Checkout() {
                     <br />
                     <div className='col-md-12'>
                       <div className='row'>
-                        <div class='col-md-5'>
+                        <div className='col-md-5'>
                           <input
                             type="submit"
                             value='تایید'
