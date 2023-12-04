@@ -262,4 +262,12 @@ ul.pagination li a.active {
 }
 
 
+/* Map */
+
+.leaflet-container {
+  width: 100%;
+  height: 200px;
+}
+
+
 

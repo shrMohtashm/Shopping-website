@@ -6,7 +6,7 @@ import Select from 'react-select';
 import Toast from '../../Components/Toast/Toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-
+import Map from '../../Components/Map/Map';
 
 export default function Checkout() {
 
@@ -47,8 +47,8 @@ export default function Checkout() {
   const [error, setError] = useState(false)
   const [toast, setToast] = useState({ type: 'info', message: '' })
   const navigate = useNavigate();
-  const dispatch=useDispatch()
-  
+  const dispatch = useDispatch()
+
 
   const schema = yup.object().shape({
     fullname: yup.string().required("فیلد نام اجباری است"),
@@ -105,7 +105,7 @@ export default function Checkout() {
   return (
     <>
       <div className='row bg-dark' style={{ height: '100vh', paddingTop: '45px' }}>
-        <div className='col-md-2'></div>
+        <div class='col-md-2'></div>
         <div className='col-md-8'>
           <div className='row bg-light border border-dark border-1'>
             <div className='col-md-12 '>
@@ -169,25 +169,35 @@ export default function Checkout() {
                     />
                     <span className='fs-6 text-danger p-2 mb-1'>  {errors.confirmPassword?.message} </span>
                     <br />
+                    <div className='col-md-12'>
+                      <div className='row'>
+                        <div class='col-md-5'>
+                          <input
+                            type="submit"
+                            value='تایید'
+                            className="btn btn-dark my-2 py-1 ms-3"
+                          />
+                          <span>مبلغ پرداختی:
+                            $
+                            {
+                              JSON.parse(localStorage.getItem('TotalPrice'))
 
-                    <input
-                      type="submit"
-                      value='تایید'
-                      className="btn btn-dark my-2 py-1 ms-3"
-                    />
-                    <span>مبلغ پرداختی:
-                      $
-                      {
-                        JSON.parse(localStorage.getItem('TotalPrice'))
-
-                      }
-                    </span>
+                            }
+                          </span>
+                          <div className='me-2'>جهت دریافت لوکیشن روی نقشه کلیک کنید</div>
+                        </div>
+                        <div className='col-md-7'>
+                          <Map />
+                        </div>
+                      </div>
+                    </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
       </div>
       <Toast type={toast.type} message={toast.message} />
     </>
