@@ -1,14 +1,15 @@
+import axiosInstance from '../../services/axios/config';
 export { default } from './HomePage';
 
 
-// export async function getProducts() {
-//     const products =await fetch('https://fakestoreapi.com/products');
-//     return await products.json();
-//   }
-  
- export  async function getCategories() {
-    const categories =await fetch('https://fakestoreapi.com/products/categories');
-    return await categories.json();
+  export async function getCategories() {
+    try {
+      const response = await axiosInstance.get('/products/categories');
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      throw error;
+    }
   }
 
   

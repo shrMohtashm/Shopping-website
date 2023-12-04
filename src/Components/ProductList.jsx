@@ -5,22 +5,31 @@ import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../action';
 import Loading from './Loading';
-
+import Toast from './Toast/Toast';
 
 export default function ProductList({ categories }) {
 
   const [searchItem, setSearchItem] = useState("");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
+
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 8;
   const status=useSelector(state => state.products.status)
+  const errorMessage=useSelector(state => state.products.error)
+  const [toast, setToast] = useState({ type: 'info', message: '' })
 
 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
+
+  useEffect(()=>{
+    if(errorMessage) 
+    {  setToast({ type: "error", message: errorMessage }) }
+
+  },[errorMessage,setToast])
 
   const products = useSelector(state => state.products.entities)
 
@@ -110,7 +119,7 @@ export default function ProductList({ categories }) {
           />
         </>
       }
-
+  <Toast type={toast.type} message={toast.message} />
     </>
   )
 }

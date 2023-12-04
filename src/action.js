@@ -1,4 +1,4 @@
-
+import axiosInstance from "./services/axios/config"
 export const selectCartItems = (state => state.products.cart)
 
 export const selectProducts = (state => state.products.entities)
@@ -37,21 +37,19 @@ export const fetchProductsFailure = (error) => ({
 });
 
 
+
 export const fetchProducts = () => {
     return async (dispatch) => {
         dispatch(fetchProductsRequest());
-
         try {
-            const response = await fetch('https://fakestoreapi.com/products');
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const products = await response.json();
+            const response = await axiosInstance.get('/products');
+            const products = response.data;
             dispatch(fetchProductsSuccess(products));
         } catch (error) {
             dispatch(fetchProductsFailure(error.message));
         }
     };
 };
+
+
 
