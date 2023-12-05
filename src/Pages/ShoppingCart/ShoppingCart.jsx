@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
-import { addToCart, decreaseQuantity, removeFromCart, selectCartItems, selectProducts } from '../../action';
+import { addToCart, decreaseQuantity, removeFromCart, selectCartItems, selectProducts } from '../../redux/actions/action';
 
 const truncateTitle = (title) => {
   const words = title.split(' ');
@@ -17,7 +17,6 @@ export default function ShoppingCart() {
   const products = useSelector(selectProducts)
   const dispatch = useDispatch()
   const [total, setTotal] = useState(0)
-
 
   useEffect(()=>{
     totalPrice()

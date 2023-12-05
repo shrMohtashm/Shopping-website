@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-
 const axiosInstance = axios.create({
     baseURL: 'https://fakestoreapi.com'
 
 });
-
-export default axiosInstance;
-
 
 axiosInstance.interceptors.request.use(
     config => {
@@ -39,3 +35,4 @@ axiosInstance.interceptors.response.use(
     }
 );
 
+export default axiosInstance;

@@ -1,6 +1,6 @@
 import { Fragment, React, useState } from 'react'
 import { MdOutlineShoppingCart } from "react-icons/md";
-import { FaTrash } from "react-icons/fa";
+import { FaTrashAlt } from "react-icons/fa";
 import {
     Button, Badge, Dropdown,
     DropdownToggle,
@@ -9,7 +9,7 @@ import {
 } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../action';
+import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../redux/actions/action';
 
 const truncateTitle = (title) => {
     const words = title.split(' ');
@@ -50,9 +50,10 @@ export default function ShoppingCartButton() {
                                         <DropdownItem style={{ width: "200px" }}
                                         >
                                             <div className='d-flex justify-content-between'>
-                                                <Button color='none' onClick={() => dispatch(removeFromCart(cartProduct.id))}>
-                                                    <FaTrash color='red' />
-                                                </Button>
+                                                <span color='none' onClick={() => dispatch(removeFromCart(cartProduct.id))}>
+                                                <FaTrashAlt color='red'/>
+                                                   
+                                                </span>
 
                                                 <div>
                                                     <span>
@@ -76,7 +77,6 @@ export default function ShoppingCartButton() {
                             }
                         })
                     }
-
                     {
                         cartItems.length > 0 ?
                             <Link to='/shoppingCart'>

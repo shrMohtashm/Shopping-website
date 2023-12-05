@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import {Col,CardFooter,Card, CardImg,CardBody,CardTitle,CardSubtitle,CardText,Button} from 'reactstrap'
-import { selectCartItems } from '../action';
+import { selectCartItems } from '../../redux/actions/action';
 export default function Product({id,description,title,quantity,category,image,price}) {
 
   const truncateTitle = (title) => {

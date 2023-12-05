@@ -1,4 +1,4 @@
-import axiosInstance from "./services/axios/config"
+import axiosInstance from "../../services/apiConfig"
 export const selectCartItems = (state => state.products.cart)
 
 export const selectProducts = (state => state.products.entities)
@@ -6,6 +6,11 @@ export const selectProducts = (state => state.products.entities)
 export const selectNumber = (state => state.products.number)
 
 export const selectTotalPrice = (state => state.products.totalPrice)
+
+export const selectStatus=(state => state.products.status)
+
+export const selectErrorMessage=(state => state.products.error)
+
 
 export const removeFromCart=(itemId)=>({ 
         type: 'REMOVE_FROM_CART',
@@ -38,18 +43,7 @@ export const fetchProductsFailure = (error) => ({
 
 
 
-export const fetchProducts = () => {
-    return async (dispatch) => {
-        dispatch(fetchProductsRequest());
-        try {
-            const response = await axiosInstance.get('/products');
-            const products = response.data;
-            dispatch(fetchProductsSuccess(products));
-        } catch (error) {
-            dispatch(fetchProductsFailure(error.message));
-        }
-    };
-};
+
 
 
 
