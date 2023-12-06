@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-import { CardGroup, Input } from 'reactstrap';
+import { CardGroup, Input, Row } from 'reactstrap';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../services/productsServices';
 import Loading from '../Loading';
 import Toast from '../toast/Toast';
 import { selectErrorMessage, selectProducts, selectStatus } from '../../redux/actions/action';
+import ProductSkeleton from './ProductSkeleton';
 
 const Product = lazy(() => import('./Product'));
 
@@ -40,7 +41,7 @@ export default function ProductList({ categories }) {
   const endIndex = startIndex + itemsPerPage;
   const subset = filteredProducts.slice(startIndex, endIndex);
   // setTotalPages(Math.ceil(data.length / itemsPerPage))
-  
+
   const handlePageChange = (selectedPage) => {
     setCurrentPage(selectedPage.selected);
   }
@@ -99,32 +100,42 @@ export default function ProductList({ categories }) {
 
 
       <Suspense fallback={<Loading />}>
-       
-      {
 
-        status === 'pending' ? <Loading />
-          : 
-          <>
-            <CardGroup>
-              {subset.map((item) => (
-                <Product key={item.id} id={item.id} description={item.description} title={item.title} quantity={item.rating.count} category={item.category} image={item.image} price={item.price} />
-              ))}
-            </CardGroup>
-            <ReactPaginate
-              previousLabel={"<<"}
-              nextLabel={">>"}
-              breakLabel={"..."}
-              pageCount={totalPages}
-              onPageChange={handlePageChange}
-              forcePage={currentPage}
-              containerClassName={'pagination'}
-              pageLinkClassName={'page-number'}
-              previousLinkClassName={'page-number'}
-              nextLinkClassName={'page-number'}
-              activeLinkClassName={'active'}
-            />
-          </>
-      }
+        {
+
+          status === 'pending' ?
+            // (
+
+            //   <Row>
+            //     {Array.from({ length: itemsPerPage }).map((_, index) => (
+            //       <ProductSkeleton key={index} />
+            //     ))
+            //     }
+            //   </Row>
+            // )
+            <div></div>
+            :
+            <>
+              <CardGroup>
+                {subset.map((item) => (
+                  <Product key={item.id} id={item.id} description={item.description} title={item.title} quantity={item.rating.count} category={item.category} image={item.image} price={item.price} />
+                ))}
+              </CardGroup>
+              <ReactPaginate
+                previousLabel={"<<"}
+                nextLabel={">>"}
+                breakLabel={"..."}
+                pageCount={totalPages}
+                onPageChange={handlePageChange}
+                forcePage={currentPage}
+                containerClassName={'pagination'}
+                pageLinkClassName={'page-number'}
+                previousLinkClassName={'page-number'}
+                nextLinkClassName={'page-number'}
+                activeLinkClassName={'active'}
+              />
+            </>
+        }
       </Suspense>
       <Toast type={toast.type} message={toast.message} />
     </>

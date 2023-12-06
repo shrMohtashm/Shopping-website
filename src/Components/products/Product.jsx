@@ -1,69 +1,67 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
-import {Col,CardFooter,Card, CardImg,CardBody,CardTitle,CardSubtitle,CardText,Button} from 'reactstrap'
+import { Col, CardFooter, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
 import { selectCartItems } from '../../redux/actions/action';
-export default function Product({id,description,title,quantity,category,image,price}) {
+import 'react-loading-skeleton/dist/skeleton.css'
+export default function Product({ id, description, title, quantity, category, image, price }) {
 
   const truncateTitle = (title) => {
     const words = title.split(' ');
-    const truncatedWords = words.slice(0,10);
+    const truncatedWords = words.slice(0, 10);
     return truncatedWords.join(' ');
   };
+  const cartItems = useSelector(selectCartItems)
+  const dispatch = useDispatch()
 
-  const cartItems=useSelector(selectCartItems)
-  const dispatch=useDispatch()
-
-  
-    return (
+  return (
     <Col lg='3' md='6' sm='12' xs='12' dir='ltr'>
-  <Card className='p-3'>
-    <CardImg
-      alt="Card image cap"
-      src={image}
-      top
-      width="100%"
-      style={{objectFit:'contain'}}
-    />
-    <CardBody>
-      <CardTitle tag="h5">
-        {title}
-      </CardTitle>
-      <CardSubtitle
-        className="mb-2 text-danger"
-        tag="h6"
-      >
-        {category}
-      </CardSubtitle>
-      <CardText style={{fontSize:'15px'}}>
-       {truncateTitle(description)}
-      </CardText>
-   
-     
-    </CardBody>
+      <Card className='p-3'>
+       {
+         <CardImg
+         alt="Card image cap"
+         src={image}
+         top
+         width="100%"
+         style={{ objectFit: 'contain' }}
+       />
+       }
+        <CardBody>
+          <CardTitle tag="h5">
+            {title}
+          </CardTitle>
+          <CardSubtitle
+            className="mb-2 text-danger"
+            tag="h6"
+          >
+            {category}
+          </CardSubtitle>
+          <CardText style={{ fontSize: '15px' }}>
+            { truncateTitle(description) }
+          </CardText>
+        </CardBody>
+       
     <CardFooter>
-   <div className='d-flex justify-content-between'>
-   <span>price: {price}</span>
-    {quantity > 0 ? <div>
-      {cartItems.some(item=>item.id === id) ? 
-          <Button color='dark' className='me-2' onClick={()=>dispatch({
-            type:'REMOVE_FROM_CART',
-            payload : id
+    <div className='d-flex justify-content-between'>
+      <span>price: {price } </span>
+      {quantity > 0 ? <div>
+        {cartItems.some(item => item.id === id) ?
+          <Button color='dark' className='me-2' onClick={() => dispatch({
+            type: 'REMOVE_FROM_CART',
+            payload: id
           })}>
-             <FaTrash color='red' /> 
-             </Button>
-              : null  }
-    <Button color='dark' onClick={()=>dispatch({
-      type : 'ADD_TO_CART',
-      payload: id
-    })}>اضافه کردن به سبد خرید</Button>
-    
-    </div> : <span>ناموجود</span>}
-   </div>
-        
-      
+            <FaTrash color='red' />
+          </Button>
+          : null}
+        <Button color='dark' onClick={() => dispatch({
+          type: 'ADD_TO_CART',
+          payload: id
+        })}>اضافه کردن به سبد خرید</Button>
+
+      </div> : <span>ناموجود</span>}
+    </div>
   </CardFooter>
-  </Card>
-  </Col>
+      </Card>
+    </Col>
   )
 }

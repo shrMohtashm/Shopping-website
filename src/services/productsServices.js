@@ -3,19 +3,20 @@ import axiosInstance from "./apiConfig";
 
 
 export const fetchProducts = () => {
-
     return async (dispatch) => {
         dispatch(fetchProductsRequest());
-        try {
+        // setTimeout(async () => {
+          try {
             const response = await axiosInstance.get('/products');
             const products = response.data;
             dispatch(fetchProductsSuccess(products));
-        } catch (error) {
+          } catch (error) {
             dispatch(fetchProductsFailure(error.message));
-        }
+          }
+        // }
+        //  , 9000);
     };
 };
-
 
 export async function getCategories() {
     try {
