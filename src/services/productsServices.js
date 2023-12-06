@@ -1,7 +1,9 @@
 import { fetchProductsRequest,fetchProductsSuccess,fetchProductsFailure } from "../redux/actions/action";
 import axiosInstance from "./apiConfig";
 
+
 export const fetchProducts = () => {
+
     return async (dispatch) => {
         dispatch(fetchProductsRequest());
         try {

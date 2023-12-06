@@ -1,5 +1,4 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
-import Product from './Product'
 import { CardGroup, Input } from 'reactstrap';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,7 +6,8 @@ import { fetchProducts } from '../../services/productsServices';
 import Loading from '../Loading';
 import Toast from '../toast/Toast';
 import { selectErrorMessage, selectProducts, selectStatus } from '../../redux/actions/action';
-// const Lazyyy =lazy(() => import('./Product'));
+
+const Product = lazy(() => import('./Product'));
 
 export default function ProductList({ categories }) {
 
@@ -27,7 +27,7 @@ export default function ProductList({ categories }) {
 
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts())
   }, []);
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function ProductList({ categories }) {
 
 
 
-      {/* <Suspense fallback={<div>loading..........</div>}> */}
+      <Suspense fallback={<Loading />}>
        
       {
 
@@ -125,8 +125,7 @@ export default function ProductList({ categories }) {
             />
           </>
       }
-
-      {/* </Suspense> */}
+      </Suspense>
       <Toast type={toast.type} message={toast.message} />
     </>
   )

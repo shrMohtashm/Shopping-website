@@ -1,19 +1,21 @@
-import React from 'react'
-import { Route,Routes } from 'react-router-dom'
-import HomePage from '../Pages/Home/HomeView'
-import ShoppingCart from '../Pages/ShoppingCart/ShoppingCart'
-import Checkout from '../Pages/Checkout/Checkout'
+import React, { lazy, Suspense } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import NotFound from '../components/NotFound'
 import Layout from '../Pages/Home/components/Layout'
+import Loading from '../components/Loading';
+
+const HomePage = lazy(() => import('../Pages/Home/HomeView'));
+const ShoppingCart = lazy(() => import('../Pages/ShoppingCart/ShoppingCart'));
+const Checkout = lazy(() => import('../Pages/Checkout/Checkout'));
 
 export default function RouterConfig() {
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
-                <Route index element={<HomePage />} />
+                <Route index element={<Suspense fallback={<Loading />}><HomePage /></Suspense>} />
             </Route>
-            <Route path="/shoppingCart" element={<ShoppingCart />} />
-            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/shoppingCart" element={<Suspense fallback={<div>Loading...</div>}><ShoppingCart /></Suspense>} />
+            <Route path="/checkout" element={<Suspense fallback={<Loading />}><Checkout /></Suspense>} />
             <Route path="*" element={<NotFound />} />
         </Routes>
     )

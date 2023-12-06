@@ -1,5 +1,3 @@
-"use client";
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -10,13 +8,13 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store, { persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
-import { ErrorBoundary } from 'react-error-boundary';
-import ErrorPage from './components/ErrorPage';
+import ErrorBoundary from './components/error/ErrorBoundary';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
-    <ErrorBoundary FallbackComponent={ErrorPage}>
+    <ErrorBoundary>
         <BrowserRouter>
             <Provider store={store}>
                 <PersistGate persistor={persistor}>

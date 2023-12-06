@@ -22,6 +22,10 @@ export default function ShoppingCart() {
     totalPrice()
   },[cartItems])
 
+  // useEffect(()=>{
+  //   throw new Error("Something went wronge Error")
+  // },[])
+  
   const totalPrice = () => {
     var prices = []
     cartItems.map((item) => {
@@ -128,10 +132,6 @@ export default function ShoppingCart() {
           </div>
         </div>
       </div>
-
-      <div></div>
-
-
     </>
   )
 }

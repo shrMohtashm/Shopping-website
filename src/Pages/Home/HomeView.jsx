@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import Carousel from './components/Carousel'
 import { getCategories } from '../../services/productsServices'
 import ProductList from '../../components/products/ProductList'
