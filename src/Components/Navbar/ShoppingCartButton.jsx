@@ -10,12 +10,9 @@ import {
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../redux/actions/action';
+import { truncateTitle } from '../../utils/helperFunctions';
 
-const truncateTitle = (title) => {
-    const words = title.split(' ');
-    const truncatedWords = words.slice(0, 1);
-    return truncatedWords.join(' ');
-};
+
 
 export default function ShoppingCartButton() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -57,7 +54,7 @@ export default function ShoppingCartButton() {
 
                                                 <div>
                                                     <span>
-                                                        {truncateTitle(cartProduct.title)}
+                                                        {truncateTitle(cartProduct.title,1)}
                                                     </span>
 
                                                     <img src={cartProduct.image}

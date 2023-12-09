@@ -4,13 +4,10 @@ import { FaTrash } from "react-icons/fa";
 import { Col, CardFooter, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
 import { selectCartItems } from '../../redux/actions/action';
 import 'react-loading-skeleton/dist/skeleton.css'
+import { truncateTitle } from '../../utils/helperFunctions';
+
 export default function Product({ id, description, title, quantity, category, image, price }) {
 
-  const truncateTitle = (title) => {
-    const words = title.split(' ');
-    const truncatedWords = words.slice(0, 10);
-    return truncatedWords.join(' ');
-  };
   const cartItems = useSelector(selectCartItems)
   const dispatch = useDispatch()
 
@@ -37,7 +34,7 @@ export default function Product({ id, description, title, quantity, category, im
             {category}
           </CardSubtitle>
           <CardText style={{ fontSize: '15px' }}>
-            { truncateTitle(description) }
+            { truncateTitle(description,10) }
           </CardText>
         </CardBody>
        

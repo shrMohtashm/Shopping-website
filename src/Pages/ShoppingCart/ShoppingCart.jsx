@@ -4,13 +4,7 @@ import { FaTrash } from "react-icons/fa";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
 import { addToCart, decreaseQuantity, removeFromCart, selectCartItems, selectProducts } from '../../redux/actions/action';
-
-const truncateTitle = (title) => {
-  const words = title.split(' ');
-  const truncatedWords = words.slice(0, 4);
-  return truncatedWords.join(' ');
-};
-
+import { truncateTitle } from '../../utils/helperFunctions';
 export default function ShoppingCart() {
 
   const cartItems = useSelector(selectCartItems)
@@ -97,7 +91,7 @@ export default function ShoppingCart() {
 
                           <div className='col-md-8 text-start'>
                             <span>
-                              {truncateTitle(product.title)}
+                              {truncateTitle(product.title,4)}
                             </span>
 
                             <img src={product.image}

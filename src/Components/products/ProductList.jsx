@@ -102,7 +102,7 @@ export default function ProductList({ categories }) {
       <Suspense fallback={<Loading />}>
 
         {
-
+          
           status === 'pending' ?
             (
 
