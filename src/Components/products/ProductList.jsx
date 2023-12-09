@@ -104,16 +104,16 @@ export default function ProductList({ categories }) {
         {
 
           status === 'pending' ?
-            // (
+            (
 
-            //   <Row>
-            //     {Array.from({ length: itemsPerPage }).map((_, index) => (
-            //       <ProductSkeleton key={index} />
-            //     ))
-            //     }
-            //   </Row>
-            // )
-            <div></div>
+              <Row>
+                {Array.from({ length: itemsPerPage }).map((_, index) => (
+                  <ProductSkeleton key={index} />
+                ))
+                }
+              </Row>
+            )
+    
             :
             <>
               <CardGroup>

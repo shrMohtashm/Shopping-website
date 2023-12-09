@@ -269,5 +269,23 @@ ul.pagination li a.active {
   height: 200px;
 }
 
+/* Skeleton  */
+
+.skeletonAnimation{
+  animation: skeleton-animation 1.5s infinite linear;
+  background-color: #E7EDF1;
+}
+@keyframes skeleton-animation {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 
 

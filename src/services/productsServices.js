@@ -14,7 +14,7 @@ export const fetchProducts = () => {
             dispatch(fetchProductsFailure(error.message));
           }
         // }
-        //  , 9000);
+    //      , 4000);
     };
 };
 
