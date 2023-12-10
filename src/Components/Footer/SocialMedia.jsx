@@ -12,7 +12,7 @@ export default function SocialMedia() {
             className="btn btn-outline-light btn-floating m-1"
             href="#!"
             role="button"
-          ><FaGoogle /></a>
+          ><FaGoogle data-testid="googleIcon"/></a>
           <a
             className="btn btn-outline-light btn-floating m-1"
             href="#!"

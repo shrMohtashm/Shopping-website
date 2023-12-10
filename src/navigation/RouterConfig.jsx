@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import NotFound from '../components/NotFound'
+import NotFound from '../Components/NotFound'
 import Layout from '../Pages/Home/components/Layout'
-import Loading from '../components/Loading';
+import Loading from '../Components/Loading';
 
 const HomePage = lazy(() => import('../Pages/Home/HomeView'));
 const ShoppingCart = lazy(() => import('../Pages/ShoppingCart/ShoppingCart'));
