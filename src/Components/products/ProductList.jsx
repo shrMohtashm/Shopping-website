@@ -4,7 +4,7 @@ import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../services/productsServices';
 import Loading from '../Loading';
-import Toast from '../toast/Toast';
+import Toast from '../Toast';
 import { selectErrorMessage, selectProducts, selectStatus } from '../../redux/actions/action';
 import ProductSkeleton from './ProductSkeleton';
 

@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup"
 import Select from 'react-select';
-import Toast from '../../Components/toast/Toast'
+import Toast from '../../Components/Toast';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Map from '../../Components/map/Map';
+import Map from '../../Components/Map'
 import { Controller } from 'react-hook-form';
 
 export default function Checkout() {
