@@ -9,7 +9,6 @@ import { Provider } from 'react-redux';
 import store, { persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 import ErrorBoundary from './Components/error/ErrorBoundary';
-import Skeleton,{SkeletonTheme} from 'react-loading-skeleton';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,9 +18,7 @@ root.render(
         <BrowserRouter>
             <Provider store={store}>
                 <PersistGate persistor={persistor}>
-                <SkeletonTheme baseColor="#CACDCA" highlightColor="#444">
                     <App />
-                    </SkeletonTheme>
                 </PersistGate>
             </Provider>
         </BrowserRouter>

@@ -1,17 +1,11 @@
 import { Fragment, React, useState } from 'react'
-import { MdOutlineShoppingCart } from "react-icons/md";
-import { FaTrashAlt } from "react-icons/fa";
-import {
-    Button, Badge, Dropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-} from 'reactstrap';
+import {Button, Badge, Dropdown,DropdownToggle,DropdownMenu,DropdownItem,} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../redux/actions/action';
 import { truncateTitle } from '../../utils/helperFunctions';
-
+import { MdOutlineShoppingCart } from "react-icons/md";
+import { FaTrashAlt } from "react-icons/fa";
 
 
 export default function ShoppingCartButton() {

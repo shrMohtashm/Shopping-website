@@ -7,7 +7,6 @@ import Loading from '../Loading';
 import Toast from '../Toast';
 import { selectErrorMessage, selectProducts, selectStatus } from '../../redux/actions/action';
 import ProductSkeleton from './ProductSkeleton';
-
 const Product = lazy(() => import('./Product'));
 
 export default function ProductList({ categories }) {
@@ -82,8 +81,6 @@ export default function ProductList({ categories }) {
           })
         }
         <button className="btn btn-dark btn-sm m-2 p-2" onClick={() => setFilteredProducts(products)}>All Products</button>
-
-
         <div className='row d-flex align-items-center justify-content-center'>
           <div className='col-md-6 text-center'>
             <Input
@@ -100,7 +97,6 @@ export default function ProductList({ categories }) {
 
 
       <Suspense fallback={<Loading />}>
-
         {
           
           status === 'pending' ?

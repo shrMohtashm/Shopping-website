@@ -12,7 +12,7 @@ export default function Footer() {
     { path: 'https://www.google.com/', title: 'گوگل',id:'3' },
     { path: 'https://www.digikala.com/', title: 'دیجی کالا',id:'4' },
   ]
-  const linkSection = links.map((link, index) => <Links key={link.id} path={link.path} title={link.title} />)
+  const linkSection = links.map((link) => <Links key={link.id} path={link.path} title={link.title} />)
   
   return (
     <Row>
@@ -28,9 +28,7 @@ export default function Footer() {
           <AboutUs />
           <Contact />
         </Row>
-
-        <SocialMedia />
-        
+        <SocialMedia /> 
       </footer>
     </Row>
 

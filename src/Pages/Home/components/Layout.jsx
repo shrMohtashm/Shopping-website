@@ -10,6 +10,6 @@ export default function Layout() {
        <Navbar />
            <Outlet />
        <Footer />
-    </Container >
+    </Container>
   )
 }

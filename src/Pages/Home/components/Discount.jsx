@@ -6,7 +6,7 @@ export default function Discount() {
     
    <div className='row my-4'>
     <div className='col-md-12'>
-    <h2 className='text-center fw-bold'>----جشنواره تخفیف----</h2>
+    <h2 className='text-center fw-bold'>جشنواره تخفیف</h2>
     </div>
    </div>
     <div className='row'>

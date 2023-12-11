@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import { Col, CardFooter, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
 import { selectCartItems } from '../../redux/actions/action';
-import 'react-loading-skeleton/dist/skeleton.css'
 import { truncateTitle } from '../../utils/helperFunctions';
 
 export default function Product({ id, description, title, quantity, category, image, price }) {
@@ -55,7 +54,9 @@ export default function Product({ id, description, title, quantity, category, im
           payload: id
         })}>اضافه کردن به سبد خرید</Button>
 
-      </div> : <span>ناموجود</span>}
+      </div> 
+      : 
+      <span>ناموجود</span>}
     </div>
   </CardFooter>
       </Card>

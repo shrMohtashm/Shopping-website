@@ -17,7 +17,7 @@ export default class ErrorBoundary extends Component {
         };
       }
     
-      componentDidCatch(error, errorInfo) {
+      componentDidCatch(error) {
         console.log(error.message);
       }
     

@@ -5,8 +5,8 @@ import Layout from '../Pages/Home/components/Layout'
 import Loading from '../Components/Loading';
 
 const HomePage = lazy(() => import('../Pages/Home/HomeView'));
-const ShoppingCart = lazy(() => import('../Pages/ShoppingCart/ShoppingCart'));
-const Checkout = lazy(() => import('../Pages/Checkout/Checkout'));
+const ShoppingCart = lazy(() => import('../Pages/ShoppingCart'));
+const Checkout = lazy(() => import('../Pages/Checkout'));
 
 export default function RouterConfig() {
     return (
