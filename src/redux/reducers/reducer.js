@@ -9,7 +9,7 @@ const initalState = {
     error: ''
 }
 
-const productsReducer = produce((state, action) => {
+export const productsReducer = produce((state, action) => {
     switch (action.type) {
         case 'ADD_TO_CART':
             const itemId = action.payload

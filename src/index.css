@@ -19,7 +19,7 @@ body {
 .card{
   height: 100% !important;
   width: 100% !important;
-  border-color: #424649 !important;
+  border:none !important;
 }
 .card-footer button {
   font-size: 13px;

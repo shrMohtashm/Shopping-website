@@ -116,10 +116,13 @@ export default function ShoppingCart() {
 
               <div className='text-start bg-light px-2 py-3 border mb-1'>
                 <Link to='/checkout' className='text-decoration-none '>
-                  <Button block color='dark'>تکمیل  فرایند خرید</Button>
+                  <Button block color='success' className='mb-1'>تکمیل  فرایند خرید</Button>
                   {
                     localStorage.setItem('TotalPrice', JSON.stringify(total))
                   }
+                </Link>
+                <Link to='/' className='text-decoration-none '>
+                  <Button block color='dark'>بازگشت به صفحه اصلی</Button>
                 </Link>
               </div>
             </div>

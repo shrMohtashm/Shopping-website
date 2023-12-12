@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/preset-react": "^7.23.3",
     "@hookform/resolvers": "^3.3.2",
     "@redux-devtools/extension": "^3.2.6",
     "@testing-library/jest-dom": "^5.17.0",
@@ -61,8 +60,19 @@
     "@babel/core": "^7.23.5",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/preset-env": "^7.23.5",
+    "@babel/preset-react": "^7.23.3",
     "babel-jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "react-test-renderer": "^18.2.0",
     "redux-mock-store": "^1.5.4"
-  }
+  },
+  "jest":{
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "moduleNameMapper": {
+      "\\.(css)$": "identity-obj-proxy"
+    }
+}
 }

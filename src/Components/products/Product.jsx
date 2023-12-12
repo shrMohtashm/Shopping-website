@@ -11,8 +11,9 @@ export default function Product({ id, description, title, quantity, category, im
   const dispatch = useDispatch()
 
   return (
-    <Col lg='3' md='6' sm='12' xs='12' dir='ltr'>
-      <Card className='p-3'>
+    <Col lg='3' md='6' sm='12' xs='12' dir='ltr' className='p-2'>
+    <div className='border border-2  h-100'>
+    <Card className='p-3'>
        {
          <CardImg
          alt="Card image cap"
@@ -60,6 +61,7 @@ export default function Product({ id, description, title, quantity, category, im
     </div>
   </CardFooter>
       </Card>
+    </div>
     </Col>
   )
 }

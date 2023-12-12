@@ -6,20 +6,10 @@ import {
   Row,
   Col
 } from 'reactstrap';
+import {carouselItems as items} from '../../utils/data'
 
 export default function Carousel() {
-    const items = [
-        {
-          src:  '././images/carousel/slide2.avif',
-          altText: 'Slide 1',
-          id: 1,
-        },
-        {
-          src:  '././images/carousel/slide.avif',
-          altText: 'Slide 2',
-          id: 2,
-        },
-      ];
+
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
@@ -61,18 +51,20 @@ export default function Carousel() {
       next={next}
       previous={previous}
       className='w-100'
+      
     >
       {slides}
       <CarouselControl
         direction="prev"
         directionText="Previous"
         onClickHandler={previous}
-        
+        data-testid="previous-button" 
       />
       <CarouselControl
         direction="next"
         directionText="Next"
-        onClickHandler={next}  
+        onClickHandler={next} 
+        data-testid="next-button" 
       />
     </BoostrapCarousel>
     </Col>

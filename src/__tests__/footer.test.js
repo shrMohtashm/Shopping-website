@@ -1,60 +1,38 @@
+import React from "react";
+import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
-import Contact from "../Components/footer/Contact"
-import Links from "../Components/footer/Links"
-import { MemoryRouter } from 'react-router-dom';
-import AboutUs from "../Components/footer/AboutUs";
-import SocialMedia from "../Components/footer/SocialMedia";
+import Footer from "../Components/Footer";
+import { links } from "../utils/data";
+import { MemoryRouter } from "react-router-dom";
+jest.mock('../utils/data', () => ({
+    links: [
+      // Mock your links data here
+      { id: 1, title: 'Link 1', path: '/link1' },
+      { id: 2, title: 'Link 2', path: '/link2' },
+      // Add more mock data as needed
+    ],
+  }));
 
-test('render ContactUs successfully', () => {
-    render(<Contact />)
-
-    const contactUsHeading = screen.getByRole('heading', {
-        name: /تماس با ما/i
-    })
-    const contactUsEmail = screen.getByText(/info@example\.com/i)
-
-    expect(contactUsEmail).toBeInTheDocument()
-    expect(contactUsHeading).toBeInTheDocument()
-
-})
-
-
-test('render Links component with provided path and title', () => {
-    const path = 'https://www.example.com';
-    const title = 'Example Link';
-
-    render(
-        <MemoryRouter>
-            <Links path={path} title={title} />
-        </MemoryRouter>
-    );
-
-    const linkElement = screen.getByRole('link', { name: title });
-
-    expect(linkElement).toBeInTheDocument();
-    expect(linkElement).toHaveAttribute('href', path);
-    expect(linkElement).toHaveAttribute('target', '_blank');
-    expect(linkElement).toHaveClass('text-decoration-none');
-})
-
-test('render Aboutus component correctly', () => {
-
-    render(<AboutUs />)
-
-    const aboutUsHeading = screen.getByRole('heading', {
-        name: /درباره فروشگاه/i
+describe('Footer component', () => {
+    test('renders correctly with the provided links', () => {
+     
+  
+      render(<MemoryRouter><Footer /></MemoryRouter>);
+  
+      
+     
+  
+      links.forEach((link) => {
+        expect(screen.getByText(link.title)).toBeInTheDocument();
+      });
+  
+      expect(screen.getByText('تماس با ما')).toBeInTheDocument();
+      expect(screen.getByText('ایران-تهران')).toBeInTheDocument();
+      expect(screen.getByText('info@example.com')).toBeInTheDocument();
+      expect(screen.getByText('01 234 567 88')).toBeInTheDocument();
+  
+     
+      expect(screen.getByTestId('googleIcon')).toBeInTheDocument();
+   
     });
-    const aboutUsParagraph = screen.getByText(/لورم ایپسوم متن ساختگی/i);
-
-    expect(aboutUsHeading).toBeInTheDocument()
-    expect(aboutUsParagraph).toBeInTheDocument()
-})
-
-test('render socialMedia icons correctly',()=>{
-
-    render(<SocialMedia />)
-
-    const googleIcon=screen.getByTestId('googleIcon')
-
-    expect(googleIcon).toBeInTheDocument()
-})
+  });
