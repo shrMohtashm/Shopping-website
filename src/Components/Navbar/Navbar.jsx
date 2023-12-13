@@ -1,4 +1,4 @@
-import { React } from 'react';
+import  React  from 'react';
 import { Row, Navbar as BootstrapNavbar} from 'reactstrap';
 import ShoppingCartButton from './ShoppingCartButton';
 

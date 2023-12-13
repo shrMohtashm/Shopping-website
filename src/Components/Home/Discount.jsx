@@ -33,7 +33,7 @@ export default function Discount() {
         <div className="containerDiscount">
         <div className="cardDiscount">
             <div className="imgBxDiscount">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/26438/shoe.png" alt="nike-air-shoe"/>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/26438/shoe.png" alt="nike-air-shoe1"/>
             </div>
 
             <div className="contentBxDiscount">
@@ -53,7 +53,7 @@ export default function Discount() {
         <div className="containerDiscount">
         <div className="cardDiscount">
             <div className="imgBxDiscount">
-                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/nike02a.png" alt="nike-air-shoe"/>
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/nike02a.png" alt="nike-air-shoe2"/>
             </div>
             <div className="contentBxDiscount">
                 <h2>کتونی Air Max 97</h2>

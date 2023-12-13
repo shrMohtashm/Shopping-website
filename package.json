@@ -72,7 +72,10 @@
       "^.+\\.(js|jsx)$": "babel-jest"
     },
     "moduleNameMapper": {
-      "\\.(css)$": "identity-obj-proxy"
-    }
+      "\\.(css)$": "identity-obj-proxy",
+      "react-leaflet": "<rootDir>/mocks/reactLeafletMock.js"
+    },
+    "transformIgnorePatterns": ["/node_modules/(?!'@react-leaflet|react-leaflet')"]
+   
 }
 }

@@ -40,7 +40,7 @@ export default function Product({ id, description, title, quantity, category, im
        
     <CardFooter>
     <div className='d-flex justify-content-between'>
-      <span>price: {price } </span>
+      <span>price: {price }$</span>
       {quantity > 0 ? <div>
         {cartItems.some(item => item.id === id) ?
           <Button color='dark' className='me-2' onClick={() => dispatch({

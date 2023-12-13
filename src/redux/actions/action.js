@@ -1,4 +1,3 @@
-import axiosInstance from "../../services/apiConfig"
 export const selectCartItems = (state => state.products.cart)
 
 export const selectProducts = (state => state.products.entities)

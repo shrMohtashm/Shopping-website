@@ -51,6 +51,7 @@ export default function Carousel() {
       next={next}
       previous={previous}
       className='w-100'
+      data-testid='carousel'
       
     >
       {slides}

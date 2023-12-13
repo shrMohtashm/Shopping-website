@@ -30,8 +30,8 @@ export default function ShoppingCartButton() {
                 </DropdownToggle>
                 <DropdownMenu>
                     <DropdownItem header className='text-center text-dark'>سبدخرید</DropdownItem>
-                    {
-                        cartItems.map((cartItem) => {
+                    {count >0 &&
+                            cartItems.map((cartItem) => {
                             const cartProduct = products.find(item => item.id == cartItem.id)
                             if (cartProduct) {
 
@@ -41,7 +41,10 @@ export default function ShoppingCartButton() {
                                         <DropdownItem style={{ width: "200px" }}
                                         >
                                             <div className='d-flex justify-content-between'>
-                                                <span color='none' onClick={() => dispatch(removeFromCart(cartProduct.id))}>
+                                                <span color='none'
+                                                 onClick={() => dispatch(removeFromCart(cartProduct.id))}
+                                                 data-testid={`button-${cartProduct.id}`}
+                                                 >
                                                 <FaTrashAlt color='red'/>
                                                    
                                                 </span>
@@ -58,6 +61,7 @@ export default function ShoppingCartButton() {
                                                             borderRadius: '20px',
                                                             marginRight: "2px"
                                                         }}
+
                                                     />
 
                                                 </div>
@@ -67,6 +71,9 @@ export default function ShoppingCartButton() {
                                 )
                             }
                         })
+                          
+                      
+                     
                     }
                     {
                         cartItems.length > 0 ?

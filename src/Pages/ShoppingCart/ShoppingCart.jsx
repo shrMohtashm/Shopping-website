@@ -66,7 +66,7 @@ export default function ShoppingCart() {
                         <div className='d-flex justify-content-between bg-light px-2 py-3 border mb-1'>
                           <div className='col-md-4'>
 
-                            <Button color='none' onClick={() => dispatch(removeFromCart(item.id))}>
+                            <Button color='none' data-testid={`trashIcon-${item.id}`}  onClick={() => dispatch(removeFromCart(item.id))}>
                               <FaTrash color='red' />
                             </Button>
 
@@ -97,9 +97,6 @@ export default function ShoppingCart() {
                             <img src={product.image}
                               width={'40px'}
                               height={'40px'}
-                              style={{
-
-                              }}
                             />
 
 
