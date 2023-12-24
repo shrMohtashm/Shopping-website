@@ -51,8 +51,8 @@ export default function Checkout() {
   const schema = yup.object().shape({
     fullname: yup.string().required("فیلد نام اجباری است"),
     email: yup.string().email('ایمیل معتبر وارد کنید').required("فیلد ایمیل اجباری است"),
-    password: yup.string().min(4, 'پسورد حداقل 4 کاراکتر است').max(20, 'پسورد حداکثر 20 کاراکتر است').required("فیلد پسورد اجباری است"),
-    confirmPassword: yup.string().oneOf([yup.ref("password"), null], "رمزهای عبور مطابقت ندارند").required('فیلد اجباری است'),
+    password: yup.string().required("فیلد پسورد اجباری است").min(4, 'پسورد حداقل 4 کاراکتر است').max(20, 'پسورد حداکثر 20 کاراکتر است'),
+    confirmPassword: yup.string().required('فیلد تکرار رمز عبور اجباری است').oneOf([yup.ref("password"), null], "رمزهای عبور مطابقت ندارند"),
     city: yup.object().shape({
       value: yup.string().required('شهر '),
       label: yup.string().required('وارد'),
@@ -80,14 +80,14 @@ export default function Checkout() {
     console.log(data);
   }
 
-  useEffect(() => {
-    setToast({ type: "warning", message: `مهلت تکمیل خرید 15 دقیقه است` });
-    const timeoutId = setTimeout(() => {
-      navigate('/');
-    }, 900000)
+  // useEffect(() => {
+  //   setToast({ type: "warning", message: `مهلت تکمیل خرید 15 دقیقه است` });
+  //   const timeoutId = setTimeout(() => {
+  //     navigate('/');
+  //   }, 900000)
 
-    return () => clearTimeout(timeoutId);
-  }, [navigate])
+  //   return () => clearTimeout(timeoutId);
+  // }, [navigate])
 
 
   return (
@@ -188,9 +188,9 @@ export default function Checkout() {
                           </span>
                           <div className='me-2'>جهت دریافت لوکیشن روی نقشه کلیک کنید</div>
                         </div>
-                        <div className='col-md-7'>
+                        {/* <div className='col-md-7'>
                           <Map />
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </form>
