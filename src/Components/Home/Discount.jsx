@@ -5,7 +5,7 @@ export default function Discount() {
     <>
       <div className="row my-4">
         <div className="col-md-12">
-          <h2 className="text-center fw-bold">جشنواره تخفیف</h2>
+          <h2 className="text-center fw-bold">Special Discounts</h2>
         </div>
       </div>
       <div className="row">
@@ -19,13 +19,13 @@ export default function Discount() {
                 />
               </div>
               <div className="contentBxDiscount">
-                <h3>کتونی Odyssey React Shield</h3>
+                <h3>Odyssey React Shield</h3>
                 <div className="sizeDiscount">
-                  <h4>سایز</h4>
+                  <h4>size</h4>
                   <span>36</span>
                   <span>37</span>
                 </div>
-                <a href="#">40%تخفیف</a>
+                <a href="#">40% off</a>
               </div>
             </div>
           </div>
@@ -42,13 +42,13 @@ export default function Discount() {
               </div>
 
               <div className="contentBxDiscount">
-                <h3>کتونی Roshe Run</h3>
+                <h3>Roshe Run</h3>
                 <div className="sizeDiscount">
-                  <h4>سایز </h4>
+                  <h4>size </h4>
                   <span>40</span>
                   <span>43</span>
                 </div>
-                <a href="#">26%تخفیف</a>
+                <a href="#">26% off</a>
               </div>
             </div>
           </div>
@@ -64,13 +64,13 @@ export default function Discount() {
                 />
               </div>
               <div className="contentBxDiscount">
-                <h3>کتونی Air Max 97</h3>
+                <h3>Air Max 97</h3>
                 <div className="sizeDiscount">
-                  <h4>سایز</h4>
+                  <h4>size</h4>
                   <span>41</span>
                   <span>36</span>
                 </div>
-                <a href="#">18%تخفیف</a>
+                <a href="#">18% off</a>
               </div>
             </div>
           </div>
