@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent,screen  } from '@testing-library/react';
-import Carousel from '../../Components/Home/Carousel';
+import Carousel from 'components/Home/Carousel';
 import '@testing-library/jest-dom'
 
 describe('Carousel component', () => {

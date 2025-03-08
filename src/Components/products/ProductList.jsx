@@ -2,11 +2,11 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { CardGroup, Input, Row } from 'reactstrap';
 import ReactPaginate from 'react-paginate';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../../services/productsServices';
-import Loading from '../Loading';
-import Toast from '../Toast';
-import { selectErrorMessage, selectProducts, selectStatus } from '../../redux/actions/action';
-import ProductSkeleton from './ProductSkeleton';
+import { fetchProducts } from 'services/productsServices';
+import Loading from 'components/Loading';
+import Toast from 'components/Toast';
+import { selectErrorMessage, selectProducts, selectStatus } from 'redux/actions/action';
+import ProductSkeleton from 'components/products/ProductSkeleton';
 const Product = lazy(() => import('./Product'));
 
 export default function ProductList({ categories }) {

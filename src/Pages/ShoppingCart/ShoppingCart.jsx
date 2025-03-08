@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import { Button } from 'reactstrap'
 import { Link } from 'react-router-dom';
-import { addToCart, decreaseQuantity, removeFromCart, selectCartItems, selectProducts } from '../../redux/actions/action';
-import { truncateTitle } from '../../utils/helperFunctions';
+import { addToCart, decreaseQuantity, removeFromCart, selectCartItems, selectProducts } from 'redux/actions/action';
+import { truncateTitle } from 'utils/helperFunctions';
 export default function ShoppingCart() {
 
   const cartItems = useSelector(selectCartItems)

@@ -1,4 +1,4 @@
-import RouterConfig from "./navigation/RouterConfig";
+import RouterConfig from "navigation/RouterConfig";
 
 
 function App() {

@@ -2,8 +2,8 @@ import React ,{ Fragment,  useState } from 'react'
 import {Button, Badge, Dropdown,DropdownToggle,DropdownMenu,DropdownItem,} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeFromCart, selectCartItems, selectNumber, selectProducts } from '../../redux/actions/action';
-import { truncateTitle } from '../../utils/helperFunctions';
+import { removeFromCart, selectCartItems, selectNumber, selectProducts } from 'redux/actions/action';
+import { truncateTitle } from 'utils/helperFunctions';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaTrashAlt } from "react-icons/fa";
 

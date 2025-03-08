@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Discount from '../../Components/Home/Discount';
+import Discount from 'components/Home/Discount';
 import '@testing-library/jest-dom'
 
 describe('Discount component', () => {

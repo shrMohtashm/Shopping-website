@@ -1,8 +1,8 @@
 import React, {  useEffect, useState } from 'react'
-import Carousel from '../../Components/Home/Carousel'
-import { getCategories } from '../../services/productsServices'
-import ProductList from '../../Components/products/ProductList'
-import Discount from '../../Components/Home/Discount'
+import Carousel from 'components/Home/Carousel'
+import { getCategories } from 'services/productsServices'
+import ProductList from 'components/products/ProductList'
+import Discount from 'components/Home/Discount'
 
 
 

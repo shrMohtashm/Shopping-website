@@ -1,5 +1,5 @@
 import { fetchProductsRequest,fetchProductsSuccess,fetchProductsFailure } from "../redux/actions/action";
-import axiosInstance from "./apiConfig";
+import axiosInstance from "services/apiConfig";
 
 
 export const fetchProducts = () => {

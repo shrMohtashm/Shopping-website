@@ -6,7 +6,7 @@ import {
   Row,
   Col
 } from 'reactstrap';
-import {carouselItems as items} from '../../utils/data'
+import {carouselItems as items} from 'utils/data'
 
 export default function Carousel() {
 

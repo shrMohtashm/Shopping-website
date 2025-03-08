@@ -2,8 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { FaTrash } from "react-icons/fa";
 import { Col, CardFooter, Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap'
-import { selectCartItems } from '../../redux/actions/action';
-import { truncateTitle } from '../../utils/helperFunctions';
+import { selectCartItems } from 'redux/actions/action';
+import { truncateTitle } from 'utils/helperFunctions';
 
 export default function Product({ id, description, title, quantity, category, image, price }) {
 

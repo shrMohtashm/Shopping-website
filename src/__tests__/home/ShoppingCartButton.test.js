@@ -1,9 +1,9 @@
 import { waitFor, fireEvent, act } from "@testing-library/react";
 import '@testing-library/jest-dom'
-import ShoppingCartButton from '../../Components/Navbar/ShoppingCartButton'
-import { setupCartWith2Items } from '../../utils/reduxSetupForTest';
-import { setupCartWith1Item } from '../../utils/reduxSetupForTest';
-import { setupEmptyCart } from '../../utils/reduxSetupForTest';
+import ShoppingCartButton from 'components/Navbar/ShoppingCartButton'
+import { setupCartWith2Items } from 'utils/reduxSetupForTest';
+import { setupCartWith1Item } from 'utils/reduxSetupForTest';
+import { setupEmptyCart } from 'utils/reduxSetupForTest';
 describe('shoppingCartButton component', () => {
 
     test('displays the empty cart', async () => {

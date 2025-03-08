@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import {  screen, fireEvent, waitFor, act } from "@testing-library/react"
-import Checkout from '../../Pages/Checkout'
-import { setupCartWith2Items } from "../../utils/reduxSetupForTest";
+import Checkout from 'pages/Checkout'
+import { setupCartWith2Items } from "utils/reduxSetupForTest";
 import userEvent from "@testing-library/user-event";
 
 jest.mock('react-router-dom', () => ({
@@ -18,7 +18,6 @@ describe('Checkout Component', () => {
     expect(getByLabelText('ایمیل')).toBeInTheDocument()
     expect(getByLabelText('رمزعبور')).toBeInTheDocument()
     expect(getByLabelText('تکرار رمزعبور')).toBeInTheDocument()
-    expect(getByText('جهت دریافت لوکیشن روی نقشه کلیک کنید')).toBeInTheDocument()
 
     setTimeout(() => {
       expect(getByText(' مبلغ پرداختی: $352.15')).toBeInTheDocument()

@@ -1,6 +1,6 @@
 import  React  from 'react';
 import { Row, Navbar as BootstrapNavbar} from 'reactstrap';
-import ShoppingCartButton from './ShoppingCartButton';
+import ShoppingCartButton from 'components/Navbar/ShoppingCartButton';
 
 export default function Navbar() {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
-import Footer from "../../Components/Footer";
-import { links } from "../../utils/data";
+import Footer from "components/Footer";
+import { links } from "utils/data";
 import { MemoryRouter } from "react-router-dom";
-jest.mock('../../utils/data', () => ({
+jest.mock('utils/data', () => ({
     links: [
       { id: 1, title: 'Link 1', path: '/link1' },
       { id: 2, title: 'Link 2', path: '/link2' },

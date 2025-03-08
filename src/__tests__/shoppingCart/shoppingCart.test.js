@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
-import { waitFor,act,fireEvent, getByTestId } from "@testing-library/react"
-import ShoppingCart from '../../Pages/ShoppingCart'
-import { setupCartWith1Item, setupCartWith2Items } from "../../utils/reduxSetupForTest";
+import { waitFor,act,fireEvent } from "@testing-library/react"
+import ShoppingCart from 'pages/ShoppingCart'
+import { setupCartWith1Item, setupCartWith2Items } from "utils/reduxSetupForTest";
 
 describe('shopping cart tests',()=>{
 
