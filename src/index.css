@@ -28,7 +28,7 @@ body {
   background: linear-gradient(red,yellow,orange);
   background-clip: text;
   color:transparent;
-  font-size: 80px;
+  font-size: 120px;
   font-weight: bold;
 }
 .notFoundText{
@@ -84,7 +84,7 @@ ul.pagination li a.active {
 }
 .carouselItem
 {
-  height: 70vh;
+  height: 90vh;
 }
 
 
@@ -124,7 +124,7 @@ ul.pagination li a.active {
 
 .containerDiscount .cardDiscount .imgBxDiscount {
     position: absolute;
-    top: 50%;
+    top: 34%;
     transform: translateY(-50%);
     z-index: 1000;
     width: 100%;
@@ -166,7 +166,7 @@ ul.pagination li a.active {
     height: 210px;
 }
 
-.containerDiscount .cardDiscount .contentBxDiscount h2 {
+.containerDiscount .cardDiscount .contentBxDiscount h3 {
     position: relative;
     font-weight: 600;
     letter-spacing: 1px;
@@ -196,8 +196,8 @@ ul.pagination li a.active {
     transition-delay: .6s;
 }
 
-.containerDiscount .cardDiscount .contentBxDiscount .sizeDiscount h3,
-.containerDiscount .cardDiscount .contentBxDiscount .colorDiscount h3 {
+.containerDiscount .cardDiscount .contentBxDiscount .sizeDiscount h4,
+.containerDiscount .cardDiscount .contentBxDiscount .colorDiscount h4 {
     color: white;
     font-weight: 300;
     font-size: 14px;

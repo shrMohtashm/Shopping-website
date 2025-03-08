@@ -7,12 +7,12 @@ export const links = [
 
  export const carouselItems = [
     {
-      src:  '././images/carousel/slide2.avif',
+      src:  '/images/carousel/slide2.jpg',
       altText: 'Slide 1',
       id: 1,
     },
     {
-      src:  '././images/carousel/slide.avif',
+      src:  '/images/carousel/slide1.jpg',
       altText: 'Slide 2',
       id: 2,
     },
