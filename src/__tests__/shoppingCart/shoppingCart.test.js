@@ -15,7 +15,7 @@ describe('shopping cart tests',()=>{
             expect(getByText('1')).toBeInTheDocument();
             expect(getByTestId('trashIcon-1')).toBeInTheDocument();
             expect(getByTestId('trashIcon-2')).toBeInTheDocument();
-            expect(getByText('سبد خرید')).toBeInTheDocument();  
+            expect(getByText('cart')).toBeInTheDocument();  
         })
 
     })

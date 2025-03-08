@@ -1,8 +1,8 @@
 export const links = [
-    { path: 'https://www.google.com/', title: 'گوگل', id: '1' },
-    { path: 'https://www.digikala.com/', title: 'دیجی کالا', id: '2' },
-    { path: 'https://www.google.com/', title: 'گوگل', id: '3' },
-    { path: 'https://www.digikala.com/', title: 'دیجی کالا', id: '4' },
+    { path: 'https://www.google.com/', title: 'Google', id: '1' },
+    { path: 'https://www.digikala.com/', title: 'DigiKala', id: '2' },
+    { path: 'https://www.google.com/', title: 'Google', id: '3' },
+    { path: 'https://www.digikala.com/', title: 'DigiKala', id: '4' },
   ]
 
  export const carouselItems = [

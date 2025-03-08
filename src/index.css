@@ -7,7 +7,7 @@
 }
 body {
   font-family: 'iranSanse' !important;
-  direction: rtl;
+  /* direction: rtl; */
 }
 .row{
   --bs-gutter-x: 0!important;

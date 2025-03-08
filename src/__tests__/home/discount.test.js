@@ -10,7 +10,7 @@ describe('Discount component', () => {
     const { getByText, getByAltText, getAllByText, getByRole } = render(<Discount />)
 
     const header = getByRole('heading', {
-      name: /جشنواره تخفیف/i
+      name: /Special Discounts/i
     })
 
     const firstShoeImg = getByAltText('nOdyssey React Shield')
