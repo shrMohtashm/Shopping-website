@@ -29,8 +29,7 @@ The application supports adding products to the shopping cart, completing purcha
   - Allows removal of items.
   - Supports increasing and decreasing item quantities.
 - **Checkout Page Features:**
-  - A dropdown list for selecting cities and provinces.
-  - A map.
+  - A dropdown list for selecting cities.
   - Proper form validation before submission.
   - Displays a success message upon successful validation.
 - **Cart Icon in Header:** The cart icon dynamically displays the number of items in the cart.
