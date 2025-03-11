@@ -1,72 +1,18 @@
 import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
 import Select from "react-select";
 import Toast from "components/Toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { checkoutSchema } from "utils/validationSchemas";
+import { city_options } from "utils/data";
 
 export default function Checkout() {
-  const options = [
-    { value: "آذربایجان شرقی", label: "آذربایجان شرقی" },
-    { value: "اذربایجان غربی", label: "اذربایجان غربی" },
-    { value: "اردبیل", label: "اردبیل" },
-    { value: "اصفهان", label: "اصفهان" },
-    { value: "البرز", label: "البرز" },
-    { value: "ایلام", label: "ایلام" },
-    { value: "بوشهر", label: "بوشهر" },
-    { value: "تهران", label: "تهران" },
-    { value: "چهارمحال و بختیاری", label: "چهارمحال و بختیاری" },
-    { value: "خراسان جنوبی", label: "خراسان جنوبی" },
-    { value: "راسان رضوی", label: "راسان رضوی" },
-    { value: "خراسان شمالی", label: "خراسان شمالی" },
-    { value: "خوزستان", label: "خوزستان" },
-    { value: "زنجان", label: "زنجان" },
-    { value: "سمنان", label: "سمنان" },
-    { value: "سیستان و بلوچستان", label: "سیستان و بلوچستان" },
-    { value: "قزوین", label: "قزوین" },
-    { value: "قم", label: "قم" },
-    { value: "کردستان", label: "کردستان" },
-    { value: "کرمان", label: "کرمان" },
-    { value: "کرمانشاه", label: "کرمانشاه" },
-    { value: "کهگیلویه وبویراحمد", label: "کهگیلویه وبویراحمد" },
-    { value: "گلستان", label: "گلستان" },
-    { value: "گیلان", label: "گیلان" },
-    { value: "مازندران", label: "مازندران" },
-    { value: "مرکزی", label: "مرکزی" },
-    { value: "هرمزگان", label: "هرمزگان" },
-    { value: "همدان", label: "همدان" },
-    { value: "یزد", label: "یزد" },
-  ];
 
   const [toast, setToast] = useState({ type: "info", message: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const schema = yup.object().shape({
-    fullname: yup.string().required("فیلد نام اجباری است"),
-    email: yup
-      .string()
-      .email("ایمیل معتبر وارد کنید")
-      .required("فیلد ایمیل اجباری است"),
-    password: yup
-      .string()
-      .required("فیلد پسورد اجباری است")
-      .min(4, "پسورد حداقل 4 کاراکتر است")
-      .max(20, "پسورد حداکثر 20 کاراکتر است"),
-    confirmPassword: yup
-      .string()
-      .required("فیلد تکرار رمز عبور اجباری است")
-      .oneOf([yup.ref("password"), null], "رمزهای عبور مطابقت ندارند"),
-    city: yup
-      .object()
-      .shape({
-        value: yup.string().required("شهر "),
-        label: yup.string().required("وارد"),
-      })
-      .required("شهر خود را وارد کنید"),
-  });
 
   const {
     register,
@@ -75,7 +21,7 @@ export default function Checkout() {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(checkoutSchema),
   });
 
   const handleSelectChange = (selected) => {
@@ -85,7 +31,7 @@ export default function Checkout() {
   const onSubmit = (data) => {
     setToast({
       type: "success",
-      message: `اطلاعات کاربری شما با موفقیت ثبت شد`,
+      message: `Your user information has been successfully registered`,
     });
     dispatch({ type: "REMOVE_ALL_PRODUCTS" });
     localStorage.removeItem("TotalPrice");
@@ -95,14 +41,7 @@ export default function Checkout() {
     console.log(data);
   };
 
-  // useEffect(() => {
-  //   setToast({ type: "warning", message: `مهلت تکمیل خرید 15 دقیقه است` });
-  //   const timeoutId = setTimeout(() => {
-  //     navigate('/');
-  //   }, 900000)
 
-  //   return () => clearTimeout(timeoutId);
-  // }, [navigate])
 
   return (
     <>
@@ -115,7 +54,7 @@ export default function Checkout() {
           <div className="row bg-light border border-dark border-1">
             <div className="col-md-12 ">
               <h1 className="text-center text-dark py-3 fw-bold">
-                تکمیل فرایند خرید
+              Complete Purchase Process
               </h1>
             </div>
             <div className="col-md-12">
@@ -123,13 +62,13 @@ export default function Checkout() {
                 <div>
                   <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="name" className="mb-1">
-                      نام و نام خانوادگی
+                     Name
                     </label>
                     <input
                       id="name"
                       className="w-100 py-2 px-1 mb-1 border border-1"
                       type="text"
-                      placeholder="نام خود را وارد کنید"
+                      placeholder="please enter your name"
                       {...register("fullname")}
                     />
                     <span className="fs-6 text-danger p-2 mb-1">
@@ -137,8 +76,7 @@ export default function Checkout() {
                     </span>
                     <br />
                     <label htmlFor="city" className="mb-1">
-                      {" "}
-                      استان{" "}
+                     city
                     </label>
 
                     <Controller
@@ -149,12 +87,12 @@ export default function Checkout() {
                         <>
                           <Select
                             {...field}
-                            placeholder="انتخاب کنید"
+                            placeholder="Select"
                             onChange={(selectedOption) => {
                               handleSelectChange(selectedOption);
                               field.onChange(selectedOption);
                             }}
-                            options={options}
+                            options={city_options}
                             value={field.value || null}
                             className="mb-1"
                           />
@@ -168,13 +106,13 @@ export default function Checkout() {
                     />
                     <br />
                     <label htmlFor="email" className="mb-1">
-                      ایمیل
+                      email
                     </label>
                     <input
                       id="email"
                       type="text"
                       className="w-100 py-2 px-1 mt-2 mb-1 border border-1"
-                      placeholder="ایمیل را وارد کنید"
+                      placeholder="Enter your email"
                       {...register("email")}
                     />
                     <span className="fs-6 text-danger p-2 mb-1">
@@ -182,12 +120,12 @@ export default function Checkout() {
                     </span>
                     <br />
                     <label htmlFor="password" className="mb-1">
-                      رمزعبور
+                      password
                     </label>
                     <input
                       id="password"
                       type="password"
-                      placeholder="رمز عبور را وارد کنید"
+                      placeholder="Enter your password"
                       className="w-100 py-2 px-1 mb-1 border border-1"
                       {...register("password")}
                     />
@@ -196,31 +134,35 @@ export default function Checkout() {
                     </span>
                     <br />
                     <label htmlFor="confirmPassword" className="mb-1">
-                      تکرار رمزعبور
+                     confirm password
                     </label>
                     <input
                       id="confirmPassword"
                       type="password"
-                      placeholder="رمزعبور را دوباره وارد کنید"
+                      placeholder="Enter your confirm password"
                       className="w-100 py-2 px-1 mb-1 border border-1"
                       {...register("confirmPassword")}
                     />
                     <span className="fs-6 text-danger p-2 mb-1">
-                      {" "}
-                      {errors.confirmPassword?.message}{" "}
+                      {errors.confirmPassword?.message}
                     </span>
                     <br />
                     <div className="col-md-12">
                       <div className="row">
                         <div className="col-md-5">
+                          <button className="btn btn-danger me-1" type="button" onClick={()=>navigate(-1)}>
+                            back
+                          </button>
                           <input
                             type="submit"
-                            value="تایید"
-                            className="btn btn-dark my-2 py-1 ms-3"
+                            value="Confirm"
+                            className="btn btn-dark my-2 py-1 px-4 me-3"
                           />
+
                           <span>
-                            مبلغ پرداختی: $
+                          Total Price: 
                             {JSON.parse(localStorage.getItem("TotalPrice"))}
+                            $
                           </span>
                         </div>
                       </div>

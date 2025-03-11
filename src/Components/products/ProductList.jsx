@@ -11,7 +11,7 @@ import {
   selectStatus,
 } from "redux/actions/action";
 import ProductSkeleton from "components/products/ProductSkeleton";
-const Product = lazy(() => import("./Product"));
+const Product = lazy(() => import("components/products/Product"));
 
 export default function ProductList({ categories }) {
   const [searchItem, setSearchItem] = useState("");
@@ -62,14 +62,23 @@ export default function ProductList({ categories }) {
   };
 
   const filterItem = (selectedCategory) => {
+    let updatedList;
     if (selectedCategory === "category") {
-      setFilteredProducts(products);
+      updatedList = products;
     } else {
-      const updatedList = products.filter((item) => {
-        return item.category === selectedCategory;
-      });
-      setFilteredProducts(updatedList);
+      updatedList = products.filter(
+        (item) => item.category === selectedCategory
+      );
     }
+    setFilteredProducts(updatedList);
+    setTotalPages(Math.ceil(updatedList.length / itemsPerPage));
+    setCurrentPage(0);
+  };
+
+  const showAllProducts = () => {
+    setFilteredProducts(products);
+    setTotalPages(Math.ceil(products.length / itemsPerPage));
+    setCurrentPage(0);
   };
 
   return (
@@ -78,7 +87,7 @@ export default function ProductList({ categories }) {
       <div className="text-center py-4">
         <button
           className="btn btn-dark btn-sm m-2 p-2"
-          onClick={() => setFilteredProducts(products)}
+          onClick={showAllProducts}
         >
           All Products
         </button>
@@ -129,19 +138,21 @@ export default function ProductList({ categories }) {
                 />
               ))}
             </CardGroup>
-            <ReactPaginate
-              previousLabel={"<<"}
-              nextLabel={">>"}
-              breakLabel={"..."}
-              pageCount={totalPages}
-              onPageChange={handlePageChange}
-              forcePage={currentPage}
-              containerClassName={"pagination"}
-              pageLinkClassName={"page-number"}
-              previousLinkClassName={"page-number"}
-              nextLinkClassName={"page-number"}
-              activeLinkClassName={"active"}
-            />
+            {totalPages > 1 && (
+              <ReactPaginate
+                previousLabel={"<"}
+                nextLabel={">"}
+                breakLabel={"..."}
+                pageCount={totalPages}
+                onPageChange={handlePageChange}
+                forcePage={currentPage}
+                containerClassName={"pagination"}
+                pageLinkClassName={"page-number"}
+                previousLinkClassName={"page-number"}
+                nextLinkClassName={"page-number"}
+                activeLinkClassName={"active"}
+              />
+            )}
           </>
         )}
       </Suspense>

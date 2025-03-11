@@ -55,7 +55,7 @@ export default function ShoppingCart() {
             </div>
             <div className="col-md-12 p-5 ">
               <div className="text-start bg-light px-2 py-3 border mb-1">
-                totalPrice:
+                total Price:
                 {total}$
               </div>
               {cartItems.map((item) => {
@@ -124,7 +124,7 @@ export default function ShoppingCart() {
                 </Link>
                 <Link to="/" className="text-decoration-none ">
                   <Button block color="dark">
-                    Return to Home Page
+                    Back to Home Page
                   </Button>
                 </Link>
               </div>
