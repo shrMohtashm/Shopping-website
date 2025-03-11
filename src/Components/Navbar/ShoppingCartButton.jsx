@@ -87,7 +87,7 @@ export default function ShoppingCartButton() {
               </Button>
             </Link>
           ) : (
-            <div className="text-center"></div>
+            <div className="text-center">Empty</div>
           )}
         </DropdownMenu>
       </Dropdown>

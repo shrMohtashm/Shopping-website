@@ -10,12 +10,12 @@ describe('shopping cart tests',()=>{
         await waitFor(() => {
             expect(getByText('Mens Casual Premium Slim')).toBeInTheDocument();
             expect(getByText('Fjallraven - Foldsack No.')).toBeInTheDocument();
-            expect(getByText('totalPrice:352.15$')).toBeInTheDocument();
+            expect(getByText('total Price:352.15$')).toBeInTheDocument();
             expect(getByText('3')).toBeInTheDocument();
             expect(getByText('1')).toBeInTheDocument();
             expect(getByTestId('trashIcon-1')).toBeInTheDocument();
             expect(getByTestId('trashIcon-2')).toBeInTheDocument();
-            expect(getByText('cart')).toBeInTheDocument();  
+            expect(getByText('Shopping Cart')).toBeInTheDocument();  
         })
 
     })

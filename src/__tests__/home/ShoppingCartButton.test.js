@@ -11,9 +11,9 @@ describe('shoppingCartButton component', () => {
         await waitFor(() => {
             expect(getByText('0')).toBeInTheDocument();
             expect(getByText('0')).toHaveClass('badge bg-success rounded-pill')
-            expect(getByText(/سبدخرید/i)).toBeInTheDocument();
-            expect(getByText(/خالی است/i)).toBeInTheDocument();
-            expect(getByText(/خالی است/i)).toHaveClass('text-center');
+            expect(getByText(/Cart/i)).toBeInTheDocument();
+            expect(getByText(/Empty/i)).toBeInTheDocument();
+            expect(getByText(/Empty/i)).toHaveClass('text-center');
         })
     })
 
@@ -22,8 +22,8 @@ describe('shoppingCartButton component', () => {
         await waitFor(() => {
             expect(getByText('4')).toBeInTheDocument();
             expect(getByText('4')).toHaveClass('badge bg-success rounded-pill')
-            expect(getByText('ادامه')).toBeInTheDocument();
-            expect(getByText('ادامه')).toHaveClass('btn btn-dark btn-sm d-block w-100')
+            expect(getByText('checkout')).toBeInTheDocument();
+            expect(getByText('checkout')).toHaveClass('btn btn-dark btn-sm d-block w-100')
             expect(getByText('Mens')).toBeInTheDocument();
             expect(getByText('Fjallraven')).toBeInTheDocument();
         })
@@ -40,7 +40,7 @@ describe('shoppingCartButton component', () => {
         setTimeout(() => {
             expect(queryByText('Fjallraven')).toBeNull();
             expect(getByText('1')).toBeInTheDocument();
-            expect(getByText('ادامه')).toBeInTheDocument();
+            expect(getByText('checkout')).toBeInTheDocument();
             expect(getByText('Mens')).toBeInTheDocument();
         }, 2000);
     })
@@ -57,8 +57,8 @@ describe('shoppingCartButton component', () => {
         setTimeout(() => {
             expect(queryByText('Fjallraven')).toBeNull();
             expect(getByText('0')).toBeInTheDocument();
-            expect(getByText('ادامه')).toBeNull();
-            expect(getByText(/خالی است/i)).toBeInTheDocument();
+            expect(getByText('checkout')).toBeNull();
+            expect(getByText(/Empty/i)).toBeInTheDocument();
         }, 2000);
     })
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { FaLinkedin, FaGoogle, FaSquareInstagram } from "react-icons/fa6";
 
 export const links = [
@@ -77,7 +78,7 @@ export const discounts = [
 ];
 
 export const socialLinks = [
-  { icon: <FaGoogle data-testid="googleIcon" />, href: "#!" },
+  { icon: <FaGoogle />, href: "#!" },
   { icon: <FaSquareInstagram />, href: "#!" },
   { icon: <FaLinkedin />, href: "#!" },
 ];

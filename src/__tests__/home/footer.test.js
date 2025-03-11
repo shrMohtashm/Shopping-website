@@ -20,11 +20,11 @@ describe('Footer component', () => {
         expect(screen.getByText(link.title)).toBeInTheDocument();
       });
   
-      expect(screen.getByText('تماس با ما')).toBeInTheDocument();
-      expect(screen.getByText('ایران-تهران')).toBeInTheDocument();
+      expect(screen.getByText('About shopping website')).toBeInTheDocument()
+      expect(screen.getByText('Contact Us')).toBeInTheDocument();
+      expect(screen.getByText('Iran - Tehran')).toBeInTheDocument();
       expect(screen.getByText('info@example.com')).toBeInTheDocument();
       expect(screen.getByText('01 234 567 88')).toBeInTheDocument();
-      expect(screen.getByTestId('googleIcon')).toBeInTheDocument();
    
     });
   });

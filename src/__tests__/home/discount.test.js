@@ -13,12 +13,12 @@ describe('Discount component', () => {
       name: /Special Discounts/i
     })
 
-    const firstShoeImg = getByAltText('nOdyssey React Shield')
-    const secondShoeImg = getByAltText('nike-air-shoe1')
-    const thirdShoeImg = getByAltText('nike-air-shoe2')
-    const size = getAllByText('سایز')
+    const firstShoeImg = getByAltText('Odyssey React Shield')
+    const secondShoeImg = getByAltText('Nike Air Shoe 1')
+    const thirdShoeImg = getByAltText('Nike Air Shoe 2')
+    const size = getAllByText('Size')
     const discountButton2 = getByRole('link', {
-      name: /26%تخفیف/i
+      name: /26% off/i
     })
 
     expect(header).toBeInTheDocument();
