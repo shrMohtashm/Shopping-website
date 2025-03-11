@@ -7,9 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { checkoutSchema } from "utils/validationSchemas";
 import { city_options } from "utils/data";
+import InputField from "components/Common/InputField";
+import BackBtn from "components/Common/BackBtn";
+import SubmitBtn from "components/Common/SubmitBtn";
 
 export default function Checkout() {
-
   const [toast, setToast] = useState({ type: "info", message: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,44 +43,31 @@ export default function Checkout() {
     console.log(data);
   };
 
-
-
   return (
     <>
-      <div
-        className="row bg-dark"
-        style={{ height: "100vh", paddingTop: "45px" }}
-      >
-        <div className="col-md-2"></div>
-        <div className="col-md-8">
+      <div className="row bg-dark pt-lg-5 px-2" style={{ minHeight: "100vh" }}>
+        <div className="col-lg-8 offset-lg-2">
           <div className="row bg-light border border-dark border-1">
-            <div className="col-md-12 ">
+            <div className="col-lg-12 ">
               <h1 className="text-center text-dark py-3 fw-bold">
-              Complete Purchase Process
+                Complete Purchase Process
               </h1>
             </div>
-            <div className="col-md-12">
+            <div className="col-lg-12">
               <div className="flex gap-2 container mx-auto justify-center content-center mt-2">
                 <div>
                   <form className="p-2" onSubmit={handleSubmit(onSubmit)}>
-                    <label htmlFor="name" className="mb-1">
-                     Name
-                    </label>
-                    <input
-                      id="name"
-                      className="w-100 py-2 px-1 mb-1 border border-1"
-                      type="text"
-                      placeholder="please enter your name"
-                      {...register("fullname")}
+                    <InputField
+                      id={"fullname"}
+                      label={"Name"}
+                      type={"text"}
+                      register={register}
+                      errors={errors}
                     />
-                    <span className="fs-6 text-danger p-2 mb-1">
-                      {errors.fullname?.message}
-                    </span>
-                    <br />
-                    <label htmlFor="city" className="mb-1">
-                     city
-                    </label>
 
+                    <label htmlFor="city" className="mb-1">
+                      city
+                    </label>
                     <Controller
                       name="city"
                       control={control}
@@ -105,65 +94,42 @@ export default function Checkout() {
                       )}
                     />
                     <br />
-                    <label htmlFor="email" className="mb-1">
-                      email
-                    </label>
-                    <input
-                      id="email"
-                      type="text"
-                      className="w-100 py-2 px-1 mt-2 mb-1 border border-1"
-                      placeholder="Enter your email"
-                      {...register("email")}
-                    />
-                    <span className="fs-6 text-danger p-2 mb-1">
-                      {errors.email?.message}
-                    </span>
-                    <br />
-                    <label htmlFor="password" className="mb-1">
-                      password
-                    </label>
-                    <input
-                      id="password"
-                      type="password"
-                      placeholder="Enter your password"
-                      className="w-100 py-2 px-1 mb-1 border border-1"
-                      {...register("password")}
-                    />
-                    <span className="fs-6 text-danger p-2 mb-1">
-                      {errors.password?.message}
-                    </span>
-                    <br />
-                    <label htmlFor="confirmPassword" className="mb-1">
-                     confirm password
-                    </label>
-                    <input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="Enter your confirm password"
-                      className="w-100 py-2 px-1 mb-1 border border-1"
-                      {...register("confirmPassword")}
-                    />
-                    <span className="fs-6 text-danger p-2 mb-1">
-                      {errors.confirmPassword?.message}
-                    </span>
-                    <br />
-                    <div className="col-md-12">
-                      <div className="row">
-                        <div className="col-md-5">
-                          <button className="btn btn-danger me-1" type="button" onClick={()=>navigate(-1)}>
-                            back
-                          </button>
-                          <input
-                            type="submit"
-                            value="Confirm"
-                            className="btn btn-dark my-2 py-1 px-4 me-3"
-                          />
 
+                    <InputField
+                      id={"email"}
+                      label={"email"}
+                      type={"email"}
+                      register={register}
+                      errors={errors}
+                    />
+
+                    <InputField
+                      id={"password"}
+                      label={"password"}
+                      type={"password"}
+                      register={register}
+                      errors={errors}
+                    />
+
+                    <InputField
+                      id={"confirmPassword"}
+                      label={"confirm password"}
+                      type={"password"}
+                      register={register}
+                      errors={errors}
+                    />
+
+                    <div className="col-lg-12">
+                      <div className="row">
+                        <div className="col-md-6">
                           <span>
-                          Total Price: 
-                            {JSON.parse(localStorage.getItem("TotalPrice"))}
-                            $
+                            Total Price:
+                            {JSON.parse(localStorage.getItem("TotalPrice"))}$
                           </span>
+                        </div>
+                        <div className="col-md-6  text-end">
+                          <BackBtn />
+                          <SubmitBtn />
                         </div>
                       </div>
                     </div>

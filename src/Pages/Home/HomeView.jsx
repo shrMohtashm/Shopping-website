@@ -1,28 +1,23 @@
-import React, {  useEffect, useState } from 'react'
-import Carousel from 'components/Home/Carousel'
-import { getCategories } from 'services/productsServices'
-import ProductList from 'components/products/ProductList'
-import Discount from 'components/Home/Discount'
-
-
-
+import React, { useEffect, useState } from "react";
+import Carousel from "components/Home/Carousel";
+import { getCategories } from "services/productsServices";
+import ProductList from "components/products/ProductList";
+import Discount from "components/Home/Discount";
 
 export default function HomePage() {
-  const [categories, setCategories] = useState([])
-
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getCategories()
-      .then(categories => {
-        setCategories(categories)
-      })
-  }, [])
+    getCategories().then((categories) => {
+      setCategories(categories);
+    });
+  }, []);
 
   return (
     <React.Fragment>
-    <Carousel />
+      <Carousel />
       <Discount />
-     <ProductList categories={categories} />
+      <ProductList categories={categories} />
     </React.Fragment>
-  )
+  );
 }

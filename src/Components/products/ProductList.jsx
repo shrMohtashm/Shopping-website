@@ -3,7 +3,7 @@ import { CardGroup, Input, Row } from "reactstrap";
 import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "services/productsServices";
-import Loading from "components/Loading";
+import Loading from "components/Common/Loading";
 import Toast from "components/Toast";
 import {
   selectErrorMessage,

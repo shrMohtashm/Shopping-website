@@ -47,17 +47,12 @@ export default function ShoppingCart() {
   return (
     <>
       <div className="row bg-dark" style={{ height: "100vh" }}>
-        <div className="col-md-1"></div>
-        <div className="col-md-10">
+        <div className="col-lg-8 offset-lg-2">
           <div className="row mt-5">
-            <div className="col-md-12">
+            <div className="col-lg-12 mb-3">
               <h1 className="text-light text-center fw-bold">Shopping Cart</h1>
             </div>
-            <div className="col-md-12 p-5 ">
-              <div className="text-start bg-light px-2 py-3 border mb-1">
-                total Price:
-                {total}$
-              </div>
+            <div className="col-lg-12 p-2">
               {cartItems.map((item) => {
                 const product = products.find(
                   (product) => product.id === item.id
@@ -66,8 +61,8 @@ export default function ShoppingCart() {
                 if (product) {
                   return (
                     <Fragment key={product.id}>
-                      <div className="d-flex justify-content-between bg-light px-2 py-3 border mb-1">
-                        <div className="col-md-8 text-start">
+                      <div className="row bg-light px-2 py-3 border mb-1">
+                        <div className="col-lg-8 text-start">
                           <img
                             src={product.image}
                             width={"40px"}
@@ -76,7 +71,7 @@ export default function ShoppingCart() {
 
                           <span>{truncateTitle(product.title, 4)}</span>
                         </div>
-                        <div className="col-md-4 text-end">
+                        <div className="col-lg-4 text-end">
                           <Button
                             className="text-dark"
                             color="none"
@@ -114,7 +109,10 @@ export default function ShoppingCart() {
                   );
                 }
               })}
-
+              <div className="text-start bg-light px-2 py-3 border mb-1">
+                total Price:
+                {total}$
+              </div>
               <div className="text-start bg-light px-2 py-3 border mb-1">
                 <Link to="/checkout" className="text-decoration-none ">
                   <Button block color="success" className="mb-1">

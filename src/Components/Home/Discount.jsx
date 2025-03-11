@@ -1,4 +1,5 @@
 import React from "react";
+import { discounts } from "utils/data";
 
 export default function Discount() {
   return (
@@ -9,72 +10,28 @@ export default function Discount() {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-4 px-3 pb-2">
-          <div className="containerDiscount">
-            <div className="cardDiscount">
-              <div className="imgBxDiscount">
-                <img
-                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/nike01a.png"
-                  alt="nOdyssey React Shield"
-                />
-              </div>
-              <div className="contentBxDiscount">
-                <h3>Odyssey React Shield</h3>
-                <div className="sizeDiscount">
-                  <h4>size</h4>
-                  <span>36</span>
-                  <span>37</span>
+        {discounts &&
+          discounts.map(({ name, image, alt, sizes, discount }, index) => (
+            <div key={index} className="col-md-4 px-3 pb-2">
+              <div className="containerDiscount">
+                <div className="cardDiscount">
+                  <div className="imgBxDiscount">
+                    <img src={image} alt={alt} />
+                  </div>
+                  <div className="contentBxDiscount">
+                    <h3>{name}</h3>
+                    <div className="sizeDiscount">
+                      <h4>Size</h4>
+                      {sizes.map((size) => (
+                        <span key={size}>{size}</span>
+                      ))}
+                    </div>
+                    <a href="#">{discount}</a>
+                  </div>
                 </div>
-                <a href="#">40% off</a>
               </div>
             </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 px-3 pb-2">
-          <div className="containerDiscount">
-            <div className="cardDiscount">
-              <div className="imgBxDiscount">
-                <img
-                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/26438/shoe.png"
-                  alt="nike-air-shoe1"
-                />
-              </div>
-
-              <div className="contentBxDiscount">
-                <h3>Roshe Run</h3>
-                <div className="sizeDiscount">
-                  <h4>size </h4>
-                  <span>40</span>
-                  <span>43</span>
-                </div>
-                <a href="#">26% off</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="col-md-4 px-3 pb-2">
-          <div className="containerDiscount">
-            <div className="cardDiscount">
-              <div className="imgBxDiscount">
-                <img
-                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/881020/nike02a.png"
-                  alt="nike-air-shoe2"
-                />
-              </div>
-              <div className="contentBxDiscount">
-                <h3>Air Max 97</h3>
-                <div className="sizeDiscount">
-                  <h4>size</h4>
-                  <span>41</span>
-                  <span>36</span>
-                </div>
-                <a href="#">18% off</a>
-              </div>
-            </div>
-          </div>
-        </div>
+          ))}
       </div>
     </>
   );
