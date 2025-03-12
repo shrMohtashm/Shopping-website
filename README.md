@@ -53,7 +53,7 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 1. Clone the repository:
    ```sh
    git clone https://github.com/shrMohtashm/Shopping-website.git
-   cd <project-folder>
+   cd Shopping-website
    ```
 2. Install dependencies:
    ```sh
