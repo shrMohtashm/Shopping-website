@@ -7,6 +7,9 @@ This project is designed to create a product showcase for an online store. The m
 - A discount festival section.
 - A footer section at the bottom of the page.
 
+## 🌟 Live Demo
+Check out the live demo of the website [here](https://shrmohtashm.github.io/Shopping-website/).
+
 The application supports adding products to the shopping cart, completing purchases, and consists of the following core pages:
 - **🏠 Home Page**
 - **🛍️ Shopping Cart Page**
