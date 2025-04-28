@@ -52,19 +52,24 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 
 ## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/maintenance--v1.png" alt="maintenance--v1"/> Installation
 1. Clone the repository:
+
    ```sh
    git clone https://github.com/shrMohtashm/Shopping-website.git
    cd Shopping-website
    ```
-2. Install dependencies:
+3. Install dependencies:
+   
    ```sh
    npm install
    ```
-3. Start the development server:
+
+5. Start the development server:
+
    ```sh
    npm start
    ```
-4. Open your browser and navigate to `http://localhost:3000`.
+   
+7. Open your browser and navigate to `http://localhost:3000`.
 
 ## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/test-results.png" alt="test-results"/> Testing
 To run tests:
