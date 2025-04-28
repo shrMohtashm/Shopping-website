@@ -50,7 +50,7 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 - **Reactstrap**
 - **React Select**
 
-## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/maintenance--v1.png" alt="maintenance--v1"/> Setup Instructions
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/maintenance--v1.png" alt="maintenance--v1"/> Installation
 1. Clone the repository:
    ```sh
    git clone https://github.com/shrMohtashm/Shopping-website.git
@@ -66,7 +66,7 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
    ```
 4. Open your browser and navigate to `http://localhost:3000`.
 
-## Testing
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/test-results.png" alt="test-results"/> Testing
 To run tests:
 ```sh
 npm test
