@@ -1,6 +1,7 @@
-# 🛍️ Product Showcase App
+# Product Showcase App
+This repository is for a responsive e-commerce web application showcasing products, featuring filtering, categorization, and a shopping cart system. It allows users to browse, search, and manage products, and includes a checkout process with form validation. The app is built with React, Redux, and other modern libraries for a smooth, mobile-responsive user experience.
 
-## 📌 Overview
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/overview-pages-2.png" alt="overview-pages-2"/> Overview
 This project is designed to create a product showcase for an online store. The main page consists of several key sections, including:
 - A banner slider for product introductions.
 - A product list with filtering and categorization options.
@@ -9,16 +10,16 @@ This project is designed to create a product showcase for an online store. The m
 
 
 The application supports adding products to the shopping cart, completing purchases, and consists of the following core pages:
-- **🏠 Home Page**
-- **🛍️ Shopping Cart Page**
-- **✅ Checkout Page**
+- **Home Page**
+- **Shopping Cart Page**
+- **Checkout Page**
 
 
-## 🌟 Live Demo
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/file-preview.png" alt="file-preview"/> Live Demo
 Check out the live demo of the website [here](https://shrmohtashm.github.io/Shopping-website/).
 
 
-## 🚀 Features
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/features-list.png" alt="features-list"/> Features
 -  **Product Data Fetching:** Fetch product lists and categories from `https://fakestoreapi.com/`.
 -  **Project Architecture:** Follows a well-structured architecture and folder organization.
 -  **Styling Libraries:** Uses `reactstrap` styling libraries.
@@ -41,7 +42,7 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 - **Cart Icon in Header:** The cart icon dynamically displays the number of items in the cart.
 - **Unit Testing:** The project includes test cases for some components.
 
-## 🛠️ Technologies Used
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/motherboard.png" alt="motherboard"/> Technologies Used
 - **React.js**
 - **Redux**
 - **React Hook Form**
@@ -49,7 +50,7 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 - **Reactstrap**
 - **React Select**
 
-## ⚙️ Setup Instructions
+## <img width="25" height="25" src="https://img.icons8.com/ios/50/61dafb/maintenance--v1.png" alt="maintenance--v1"/> Setup Instructions
 1. Clone the repository:
    ```sh
    git clone https://github.com/shrMohtashm/Shopping-website.git
