@@ -55,7 +55,6 @@ Check out the live demo of the website [here](https://shrmohtashm.github.io/Shop
 
    ```sh
    git clone https://github.com/shrMohtashm/Shopping-website.git
-   cd Shopping-website
    ```
 3. Install dependencies:
    
